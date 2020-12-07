@@ -27,7 +27,7 @@ class App extends React.Component {
         console.log(err);
       });
     
-  };
+  }; 
 
 	changeHandlerSignUp = (_eventTarget) => {
 		this.setState({ newUser: { ...this.state.newUser, [_eventTarget.name]: _eventTarget.value } });
