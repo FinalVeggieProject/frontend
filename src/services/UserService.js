@@ -4,6 +4,10 @@ import axios from "axios";
 
 class UserService {
 
+  state = {
+    errorMessage: ''
+  }
+
   constructor() {
     let service = axios.create({
       baseURL: "http://localhost:3000",
@@ -21,7 +25,9 @@ class UserService {
 
   login = (username, password) => {
     return this.service.post("/login", {username, password})
-    .then(response => response.data)
+    .then(response => {
+      return response.data 
+    })
   }
 
   loggedin = () =>{

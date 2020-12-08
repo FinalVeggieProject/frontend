@@ -23,7 +23,7 @@ const LogIn = (props)=>{
         />
 
         <button type="submit">Log In</button>
-
+        {props.errorMessage && <p>{props.errorMessage}</p>}
       </form>
     </div>
   )

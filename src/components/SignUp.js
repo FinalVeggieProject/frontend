@@ -31,6 +31,7 @@ const SignUp = (props)=>{
         />
 
         <button type="submit">Crear Usuario</button>
+        {props.errorMessage && <p>{props.errorMessage}</p>}
 
         {/* <p>{message}</p> */}
 
@@ -39,4 +40,4 @@ const SignUp = (props)=>{
   )
 }
 
-export default SignUp
+export default SignUp;

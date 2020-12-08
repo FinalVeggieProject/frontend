@@ -1,7 +1,10 @@
 import './App.css';
-import React from 'react'
+import React from 'react';
+
 import SignUp from './components/SignUp';
 import LogIn from './components/LogIn';
+import Profile from './components/Profile';
+import MisDatos from './components/MisDatos';
 
 import { Link, Route, Redirect } from 'react-router-dom';
 import UserService from './services/UserService';
@@ -10,8 +13,9 @@ class App extends React.Component {
 
 	state = {
 		isLogged: {},
-		newUser: { username: '', password: '', email: ''},
-    loggingUser: { username: '', password: '', email: ''},
+		newUser: { username: '', password: '', email: '', image: '', name: '', lastName: '', birthdate: ''},
+    loggingUser: { username: '', password: '', email: '', image: '', name: '', lastName: '', birthdate: ''},
+    errorMessage: ''
 	};
 
   service = new UserService();
@@ -22,12 +26,15 @@ class App extends React.Component {
     this.service.signup(this.state.newUser.username, this.state.newUser.password, this.state.newUser.email)
       .then((result) => {
         console.log(result);
+        this.setState({errorMessage: result.message})
+        this.checkIfLoggedIn();
       })
       .catch((err) => {
         console.log(err);
       });
     
   }; 
+
 
 	changeHandlerSignUp = (_eventTarget) => {
 		this.setState({ newUser: { ...this.state.newUser, [_eventTarget.name]: _eventTarget.value } });
@@ -38,8 +45,10 @@ class App extends React.Component {
 		event.preventDefault();
 		this.service
 			.login(this.state.loggingUser.username, this.state.loggingUser.password)
-			.then(() => {
-				this.checkIfLoggedIn()
+			.then((result) => {
+        this.setState({errorMessage: result.message})
+        this.checkIfLoggedIn();
+        <Redirect to="/profile" />
 			})
 			.catch((err) => {
 				console.log('Sorry something went wrong on submit.', err);
@@ -53,7 +62,7 @@ class App extends React.Component {
 	checkIfLoggedIn = () => {
     this.service.loggedin()
     .then((result)=>{
-      this.setState({isLogged: result})
+      this.setState({isLogged: result});
     })
   };
   
@@ -70,13 +79,14 @@ class App extends React.Component {
 
 	componentDidMount() {
 		this.checkIfLoggedIn();
-	}
+  }
+  
+
 
 
   render(){
     return (
       <div className="App">
-        <h1>LANDING PAGE</h1>
 
         {!this.state.isLogged.username && <Link to="/signup">Sign Up</Link>}
         <br />
@@ -88,7 +98,12 @@ class App extends React.Component {
 					path="/signup"
 					render={() => (
 						!this.state.isLogged.username
-							? <SignUp submitSignUp={this.submitSignUp} newUser={this.state.newUser} changeHandlerSignUp={this.changeHandlerSignUp}/>
+							? <SignUp 
+                submitSignUp={this.submitSignUp} 
+                newUser={this.state.newUser} 
+                changeHandlerSignUp={this.changeHandlerSignUp}
+                errorMessage={this.state.errorMessage}
+                />
 							: <Redirect to='/' />
 					)}
 				/>
@@ -100,12 +115,35 @@ class App extends React.Component {
 							submitLogIn={this.submitLogIn}
 							loggingUser={this.state.loggingUser}
 							changeHandlerLogIn={this.changeHandlerLogIn}
+              errorMessage={this.state.errorMessage}
 						/>
 					)}
 				/>
 
+        <Route
+					path="/profile"
+					render={() => (
+					
+							<Profile 
+                  isLogged={this.state.isLogged}
+                  logOut={this.logOut}
+                />
+						
+					)}
+				/>
+
+        <Route
+					path="/misdatos"
+					render={() => (
+							<MisDatos isLogged={this.state.isLogged}/>
+					)}
+				/>
        
-        {/* {this.state.isLogged.username && <button onClick={()=>this.logOut()}>Log Out</button>} */}
+        {
+          this.state.isLogged.username
+          ?<Redirect to="/profile" />  
+          :<Redirect to='/' />
+        }
       </div>
     );
   }
