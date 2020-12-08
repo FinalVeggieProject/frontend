@@ -39,6 +39,14 @@ class UserService {
     return this.service.post("/logout", {})
     .then(response => response.data)
   }
+
+  editUser = (userToEdit, valueToEdit) => {
+    return this.service.put("/edit-user", {userToEdit, valueToEdit})
+    .then(response => {
+      console.log(response.data);
+      return response.data 
+    })
+  }
 }
 
 export default UserService;

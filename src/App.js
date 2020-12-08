@@ -15,6 +15,7 @@ class App extends React.Component {
 		isLogged: {},
 		newUser: { username: '', password: '', email: '', image: '', name: '', lastName: '', birthdate: ''},
     loggingUser: { username: '', password: '', email: '', image: '', name: '', lastName: '', birthdate: ''},
+    userToEdit: { username: '', password: '', email: '', image: '', name: '', lastName: '', birthdate: ''},
     errorMessage: ''
 	};
 
@@ -77,6 +78,26 @@ class App extends React.Component {
     })
   }
 
+  // EDIT PROFILE DATA
+
+  submitEdit = (event) => {
+    event.preventDefault();
+		this.service
+    .editUser(this.state.userToEdit, event.target[0].name)
+      .then(()=>{
+        console.log('hola');
+        this.checkIfLoggedIn();
+        <Redirect to="/profile" />
+      })
+      .catch((err)=>{
+        console.log('Sorry something went wrong on submit.', err);
+      })
+  };
+  
+  changeHandlerEdit = (_eventTarget) => {
+		this.setState({ userToEdit: { ...this.state.userToEdit, [_eventTarget.name]: _eventTarget.value } });
+  };
+
 	componentDidMount() {
 		this.checkIfLoggedIn();
   }
@@ -135,7 +156,12 @@ class App extends React.Component {
         <Route
 					path="/misdatos"
 					render={() => (
-							<MisDatos isLogged={this.state.isLogged}/>
+							<MisDatos 
+                isLogged={this.state.isLogged}
+                changeHandlerEdit={this.changeHandlerEdit}
+                submitEdit={this.submitEdit}
+                userToEdit={this.state.userToEdit}
+              />
 					)}
 				/>
        
