@@ -10,6 +10,7 @@ import { Link, Route, Redirect } from 'react-router-dom';
 import UserService from './services/UserService';
 import NewRecipe from './components/NewRecipe';
 import AllUserRecipes from './components/AllUserRecipes';
+import Recipe from './components/Recipe';
 
 class App extends React.Component {
 
@@ -18,7 +19,8 @@ class App extends React.Component {
 		newUser: { username: '', password: '', email: '', image: '', name: '', lastName: '', birthdate: ''},
     loggingUser: { username: '', password: '', email: '', image: '', name: '', lastName: '', birthdate: ''},
     userToEdit: { username: '', password: '', email: '', image: '', name: '', lastName: '', birthdate: ''},
-    newRecipe: {title: '', ingredients: '', process: '', difficulty: '', duration: '', author: '', image: ''},
+    newRecipe: {title: '', ingredients: '', process: '', difficulty: '', duration: '', author: '', image: '', id: ''},
+    recipeToEdit: {title: '', ingredients: '', process: '', difficulty: '', duration: '', author: '', image: '', id: ''},
     errorMessage: '',
     userRecipes: []
 	};
@@ -85,7 +87,6 @@ class App extends React.Component {
 		this.service
     .editUser(this.state.userToEdit, event.target[0].name)
       .then(()=>{
-        console.log('hola');
         this.checkIfLoggedIn();
         <Redirect to="/profile" />
       })
@@ -103,7 +104,7 @@ class App extends React.Component {
     event.preventDefault();
     this.service.addrecipe(this.state.newRecipe)
       .then(() => {
-        this.setState({newRecipe: {title: '', ingredients: '', process: '', difficulty: '', duration: '', author: '', image: ''}});
+        this.setState({newRecipe: {title: '', ingredients: '', process: '', difficulty: '', duration: '', author: '', image: '', id: ''}});
         <Redirect to="/profile" />
       })
       .catch((err) => {
@@ -129,6 +130,24 @@ class App extends React.Component {
         console.log(err);
       });
   }
+
+  //EDIT RECIPES
+  submitEditRecipe = (event) => {
+    event.preventDefault();
+		this.service
+    .editRecipe(this.state.recipeToEdit, event.target[0].name)
+      .then(()=>{
+        this.checkIfLoggedIn();
+        <Redirect to="/allmyrecipes" />
+      })
+      .catch((err)=>{
+        console.log('Sorry something went wrong on edit recipe.', err);
+      })
+  };
+  
+  changeHandlerEditRecipe = (_eventTarget) => {
+		this.setState({ recipeToEdit: { ...this.state.recipeToEdit, [_eventTarget.name]: _eventTarget.value } });
+  };
   
 	componentDidMount() {
     this.checkIfLoggedIn();
@@ -218,6 +237,18 @@ class App extends React.Component {
               />
 					)}
 				/>
+
+        <Route
+					path="/recipe/:id"
+					render={(props) => (
+							<Recipe 
+                {...props}
+                changeHandlerEdit={this.changeHandlerEditRecipe}
+                submitEdit={this.submitEditRecipe}
+                recipeToEdit={this.state.recipeToEdit}
+              />
+					)}
+				/>        
        
         {
           this.state.isLogged.username

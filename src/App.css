@@ -47,9 +47,13 @@
   width: 100%;
 }
 
-.App .profile img,
+.App .profile img{
+  width: 300px;
+  margin: 0 auto;
+  display: block;
+}
 .App .misdatos img{
-  width: 50%;
+  width: 300px;
   margin: 0 auto;
   display: block;
 }

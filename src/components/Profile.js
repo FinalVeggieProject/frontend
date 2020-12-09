@@ -8,7 +8,6 @@ class Profile extends React.Component {
     }
 
   render(){
-    console.log(this.props.isLogged);
     const logout = this.props.logOut;
     return(
       <div className="profile">
