@@ -14,6 +14,14 @@ const SignUp = (props)=>{
           onChange={(event)=>props.changeHandlerSignUp(event.target)}
         />
 
+      <label htmlFor="image">Imagen de perfil: </label>
+        <input 
+          type="text" 
+          name="image" 
+          value={props.newUser.image} 
+          onChange={(event)=>props.changeHandlerSignUp(event.target)}
+        />
+
       <label htmlFor="email">E-mail: </label>
         <input 
           type="text" 

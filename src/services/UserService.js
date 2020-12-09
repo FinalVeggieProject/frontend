@@ -18,8 +18,8 @@ class UserService {
     this.service = service;
   }
 
-  signup = (username, password, email) => {
-    return this.service.post("/signup", {username, password, email})
+  signup = (username, password, email, image) => {
+    return this.service.post("/signup", {username, password, email, image})
     .then(response => response.data)
   }
 
@@ -46,6 +46,16 @@ class UserService {
       console.log(response.data);
       return response.data 
     })
+  }
+
+  addrecipe = (recipe) => {
+    return this.service.post("/addrecipe", recipe)
+    .then(response => response.data)
+  }
+
+  alluserrecipes = () => {
+    return this.service.get('/alluserrecipes')
+      .then(response => response.data)
   }
 }
 

@@ -8,6 +8,8 @@ import MisDatos from './components/MisDatos';
 
 import { Link, Route, Redirect } from 'react-router-dom';
 import UserService from './services/UserService';
+import NewRecipe from './components/NewRecipe';
+import AllUserRecipes from './components/AllUserRecipes';
 
 class App extends React.Component {
 
@@ -16,7 +18,9 @@ class App extends React.Component {
 		newUser: { username: '', password: '', email: '', image: '', name: '', lastName: '', birthdate: ''},
     loggingUser: { username: '', password: '', email: '', image: '', name: '', lastName: '', birthdate: ''},
     userToEdit: { username: '', password: '', email: '', image: '', name: '', lastName: '', birthdate: ''},
-    errorMessage: ''
+    newRecipe: {title: '', ingredients: '', process: '', difficulty: '', duration: '', author: '', image: ''},
+    errorMessage: '',
+    userRecipes: []
 	};
 
   service = new UserService();
@@ -24,9 +28,8 @@ class App extends React.Component {
   //SIGNUP CONFIG
   submitSignUp = (event) => {
     event.preventDefault();
-    this.service.signup(this.state.newUser.username, this.state.newUser.password, this.state.newUser.email)
+    this.service.signup(this.state.newUser.username, this.state.newUser.password, this.state.newUser.email, this.state.newUser.image)
       .then((result) => {
-        console.log(result);
         this.setState({errorMessage: result.message})
         this.checkIfLoggedIn();
       })
@@ -35,7 +38,6 @@ class App extends React.Component {
       });
     
   }; 
-
 
 	changeHandlerSignUp = (_eventTarget) => {
 		this.setState({ newUser: { ...this.state.newUser, [_eventTarget.name]: _eventTarget.value } });
@@ -70,7 +72,6 @@ class App extends React.Component {
   logOut = ()=>{
     this.service.logout()
     .then((result)=>{
-      console.log(result)
       this.checkIfLoggedIn()
     })
     .catch((err)=>{
@@ -79,7 +80,6 @@ class App extends React.Component {
   }
 
   // EDIT PROFILE DATA
-
   submitEdit = (event) => {
     event.preventDefault();
 		this.service
@@ -98,16 +98,49 @@ class App extends React.Component {
 		this.setState({ userToEdit: { ...this.state.userToEdit, [_eventTarget.name]: _eventTarget.value } });
   };
 
-	componentDidMount() {
-		this.checkIfLoggedIn();
+  // ADD RECIPE CONFIG
+  submitRecipe = (event) => {
+    event.preventDefault();
+    this.service.addrecipe(this.state.newRecipe)
+      .then(() => {
+        this.setState({newRecipe: {title: '', ingredients: '', process: '', difficulty: '', duration: '', author: '', image: ''}});
+        <Redirect to="/profile" />
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    
+  }; 
+
+	changeHandlerRecipe = (_eventTarget) => {
+		this.setState({ newRecipe: { ...this.state.newRecipe, [_eventTarget.name]: _eventTarget.value } });
+  };
+
+  // DISPLAY ALL USER RECIPES
+  displayUserRecipes = () => {
+    this.service.alluserrecipes()
+      .then((result)=>{
+        const newUserRecipesArr = result.map((recipe)=>{
+          return recipe;
+        })
+        this.setState({userRecipes: newUserRecipesArr})
+      })
+      .catch((err)=>{
+        console.log(err);
+      });
   }
   
-
-
-
+	componentDidMount() {
+    this.checkIfLoggedIn();
+  }
+  
+  
+  
+  
   render(){
     return (
       <div className="App">
+
 
         {!this.state.isLogged.username && <Link to="/signup">Sign Up</Link>}
         <br />
@@ -148,6 +181,7 @@ class App extends React.Component {
 							<Profile 
                   isLogged={this.state.isLogged}
                   logOut={this.logOut}
+                  displayUserRecipes={this.displayUserRecipes}
                 />
 						
 					)}
@@ -161,6 +195,26 @@ class App extends React.Component {
                 changeHandlerEdit={this.changeHandlerEdit}
                 submitEdit={this.submitEdit}
                 userToEdit={this.state.userToEdit}
+              />
+					)}
+				/>
+
+        <Route
+					path="/addrecipe"
+					render={() => (
+							<NewRecipe 
+                submitRecipe={this.submitRecipe}
+                changeHandlerRecipe={this.changeHandlerRecipe}
+                newRecipe={this.state.newRecipe}
+              />
+					)}
+				/>
+
+        <Route
+					path="/allmyrecipes"
+					render={() => (
+							<AllUserRecipes 
+                userRecipes={this.state.userRecipes}
               />
 					)}
 				/>

@@ -36,3 +36,20 @@
     transform: rotate(360deg);
   }
 }
+
+.App .recipe-card{
+  border: 2px solid black;
+  width: 300px;
+  margin: 20px auto;
+}
+
+.App .recipe-card img{
+  width: 100%;
+}
+
+.App .profile img,
+.App .misdatos img{
+  width: 50%;
+  margin: 0 auto;
+  display: block;
+}

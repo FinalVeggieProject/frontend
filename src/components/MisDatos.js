@@ -13,7 +13,8 @@ class MisDatos extends React.Component {
             showEditUsername: false,
             showEditPassword: false,
             showEditBirthdate: false,
-            showEditEmail: false
+            showEditEmail: false,
+            showEditImage: false
         }
 
     }
@@ -27,10 +28,19 @@ class MisDatos extends React.Component {
 
     render(){
         return(
-            <div>
+            <div className="misdatos">
             <h2>Mis datos</h2>
 
             <Link to="/profile">Back to Profile</Link> <br/><br/>
+
+            <strong>Imagen de perfil:</strong> <img src={this.props.isLogged.image} alt={this.props.isLogged.name} />
+            {this.state.showEditImage && <EditInput 
+                                                nameValue="image"
+                                                changeHandlerEdit={this.props.changeHandlerEdit}
+                                                submitEdit={this.props.submitEdit}
+                                                userToEdit={this.props.userToEdit}
+                                            />}
+            <button onClick={()=>this.toggleShowEditName(this.state.showEditImage, 'showEditImage')}>Editar</button> <br /><br/><hr></hr>
     
             <strong>Nombre:</strong> <p>{this.props.isLogged.name}</p>
             {this.state.showEditName && <EditInput 
@@ -75,7 +85,7 @@ class MisDatos extends React.Component {
 
 
             
-            <strong>Contraseña:</strong> 
+            <strong>Contraseña:</strong> <br/><br/> <strong>*********</strong>
             {this.state.showEditPassword && <EditInput 
                                                 nameValue="password"
                                                 changeHandlerEdit={this.props.changeHandlerEdit}
@@ -93,6 +103,7 @@ class MisDatos extends React.Component {
                                                 userToEdit={this.props.userToEdit}
                                             />}
             <button onClick={()=>this.toggleShowEditName(this.state.showEditBirthdate, 'showEditBirthdate')}>Editar</button> <br /><br/><hr></hr>
+
 
 
 
