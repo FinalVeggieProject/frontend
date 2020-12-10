@@ -16,14 +16,7 @@ const NewRestaurant = (props)=>{
             onChange={(event)=>props.changeHandlerRestaurant(event.target)}
         />
         <br/>
-        <label htmlFor="owner">Dueño: </label>
-        <input 
-            type="text" 
-            name="owner" 
-            value={props.newRestaurant.owner} 
-            onChange={(event)=>props.changeHandlerRestaurant(event.target)}
-        />
-        <br/>
+
         <label htmlFor="address">Direccion: </label>
         <input 
             type="text" 
@@ -49,7 +42,7 @@ const NewRestaurant = (props)=>{
         /> <br/>
        
         <br/>
-        <label htmlFor="typeOfFood">Especialidad: </label>
+        <label htmlFor="typeOfFood">Categoría: </label>
         <input
             type="text"
             name="typeOfFood" 
@@ -57,7 +50,7 @@ const NewRestaurant = (props)=>{
             onChange={(event)=>props.changeHandlerRestaurant(event.target)}
         />
         <br/>
-        <label htmlFor="recomendations">Recomendaciones: </label>
+        <label htmlFor="recomendations">Especialidades: </label>
         <input
             type="text"
             name="recomendations" 
@@ -70,6 +63,14 @@ const NewRestaurant = (props)=>{
             type="text"
             name="webUrl" 
             value={props.newRestaurant.webUrl} 
+            onChange={(event)=>props.changeHandlerRestaurant(event.target)}
+        />
+        <br/>
+        <label htmlFor="image">Url de la imagen: </label>
+        <input
+            type="text"
+            name="image" 
+            value={props.newRestaurant.image} 
             onChange={(event)=>props.changeHandlerRestaurant(event.target)}
         />
         <br/>

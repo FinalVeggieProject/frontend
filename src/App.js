@@ -22,7 +22,7 @@ class App extends React.Component {
     userToEdit: { username: '', password: '', email: '', image: '', name: '', lastName: '', birthdate: ''},
     newRecipe: {title: '', ingredients: '', process: '', difficulty: '', duration: '', author: '', image: '', id: ''},
     recipeToEdit: {title: '', ingredients: '', process: '', difficulty: '', duration: '', author: '', image: '', id: ''},
-    newRestaurant: {name: '',owner: '', address: '', schedule: '', contact: '', typeOfFood: '', recomendations: '', webUrl: ''},
+    newRestaurant: {name: '',owner: '', address: '', schedule: '', contact: '', typeOfFood: '', recomendations: '', webUrl: '', image: ''},
     errorMessage: '',
     userRecipes: []
 	};
@@ -125,7 +125,7 @@ class App extends React.Component {
     event.preventDefault();
     this.service.addrestaurant(this.state.newRestaurant)
       .then(() => {
-        this.setState({newRestaurant: {name: '',owner: '', address: '', schedule: '', contact: '', typeOfFood: '', recomendations: '', webUrl: ''}});
+        this.setState({newRestaurant: {name: '', image:'', owner: '', address: '', schedule: '', contact: '', typeOfFood: '', recomendations: '', webUrl: ''}});
         <Redirect to="/profile" />
       })
       .catch((err) => {
