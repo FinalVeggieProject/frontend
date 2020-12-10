@@ -22,6 +22,7 @@ class Profile extends React.Component {
         <Link to="/misdatos">Mis Datos</Link> <br/><br/>
         <Link to="/addrecipe">Añadir receta</Link> <br/><br/>
         <Link to="/allmyrecipes">Ver todas mis recetas</Link> <br/><br/>
+        <Link to="/addrestaurant">Añadir restaurante</Link> <br/><br/>
   
   
         

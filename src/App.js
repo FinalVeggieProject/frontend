@@ -11,6 +11,7 @@ import UserService from './services/UserService';
 import NewRecipe from './components/NewRecipe';
 import AllUserRecipes from './components/AllUserRecipes';
 import Recipe from './components/Recipe';
+import NewRestaurant from './components/NewRestaurant';
 
 class App extends React.Component {
 
@@ -21,6 +22,7 @@ class App extends React.Component {
     userToEdit: { username: '', password: '', email: '', image: '', name: '', lastName: '', birthdate: ''},
     newRecipe: {title: '', ingredients: '', process: '', difficulty: '', duration: '', author: '', image: '', id: ''},
     recipeToEdit: {title: '', ingredients: '', process: '', difficulty: '', duration: '', author: '', image: '', id: ''},
+    newRestaurant: {name: '',owner: '', address: '', schedule: '', contact: '', typeOfFood: '', recomendations: '', webUrl: ''},
     errorMessage: '',
     userRecipes: []
 	};
@@ -116,6 +118,27 @@ class App extends React.Component {
 	changeHandlerRecipe = (_eventTarget) => {
 		this.setState({ newRecipe: { ...this.state.newRecipe, [_eventTarget.name]: _eventTarget.value } });
   };
+
+  // ADD RESTAURANT CONFIG
+
+  submitRestaurant = (event) => {
+    event.preventDefault();
+    this.service.addrestaurant(this.state.newRestaurant)
+      .then(() => {
+        this.setState({newRestaurant: {name: '',owner: '', address: '', schedule: '', contact: '', typeOfFood: '', recomendations: '', webUrl: ''}});
+        <Redirect to="/profile" />
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    
+  }; 
+
+	changeHandlerRestaurant = (_eventTarget) => {
+		this.setState({ newRestaurant: { ...this.state.newRestaurant, [_eventTarget.name]: _eventTarget.value } });
+  };
+
+
 
   // DISPLAY ALL USER RECIPES
   displayUserRecipes = () => {
@@ -251,7 +274,18 @@ class App extends React.Component {
                 recipeToEdit={this.state.recipeToEdit}
               />
 					)}
-				/>        
+				/> 
+
+        <Route
+					path="/addrestaurant"
+					render={() => (
+							<NewRestaurant
+                submitRestaurant={this.submitRestaurant}
+                changeHandlerRestaurant={this.changeHandlerRestaurant}
+                newRestaurant={this.state.newRestaurant}
+              />
+					)}
+				/>      
        
         {
           this.state.isLogged.username

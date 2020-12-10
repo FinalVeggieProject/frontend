@@ -20,43 +20,43 @@ class UserService {
 
   signup = (username, password, email, image) => {
     return this.service.post("/signup", {username, password, email, image})
-    .then(response => response.data)
+      .then(response => response.data)
   }
 
   login = (username, password) => {
     return this.service.post("/login", {username, password})
-    .then(response => {
-      return response.data 
-    })
+      .then(response => {
+        return response.data 
+      })
   }
 
   loggedin = () =>{
     return this.service.get("/loggedin")
-    .then(response => response.data)
+      .then(response => response.data)
   }
 
   logout = () =>{
     return this.service.post("/logout", {})
-    .then(response => response.data)
+      .then(response => response.data)
   }
 
   editUser = (userToEdit, valueToEdit) => {
     return this.service.put("/edit-user", {userToEdit, valueToEdit})
-    .then(response => {
-      return response.data 
-    })
+      .then(response => {
+        return response.data 
+      })
   }
 
   editRecipe = (recipeToEdit, valueToEdit) => {
     return this.service.put("/edit-recipe", {recipeToEdit, valueToEdit})
-    .then(response => {
-      return response.data 
-    })
+      .then(response => {
+        return response.data 
+      })
   }
 
   addrecipe = (recipe) => {
     return this.service.post("/addrecipe", recipe)
-    .then(response => response.data);
+      .then(response => response.data);
   }
 
   alluserrecipes = () => {
@@ -67,6 +67,12 @@ class UserService {
   showrecipe = (id) => {
     return this.service.get(`/recipe/${id}`, {id})
       .then(response => response.data);
+  }
+
+  addrestaurant = (restaurant) => {
+    console.log('holi');
+    return this.service.post('/addrestaurant', restaurant)
+      .then(response => response.data)
   }
 
 
