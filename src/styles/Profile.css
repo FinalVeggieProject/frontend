@@ -1,0 +1,37 @@
+:root {
+    --greenapp: #a6e637;
+    --greenbutton: #e2ffb0;
+    --greenintense: #197309;
+    --greenwhite: #edf5eb;
+  }
+
+.profile {
+    text-align: center;
+}
+
+.profile img{
+    position: relative;
+    top: 20px;
+    border: 4px solid var(--greenintense);
+    border-radius: 25px;
+    width: 82vw;
+    margin: 2vw auto;
+    display: block;
+}
+
+.profile h2{
+    color: var(--greenintense);
+    margin-top: 12vw;
+}
+
+.profile p{
+    font-style: italic;
+    margin-top: -5vw;
+    margin-bottom: 8vw;
+    font-size: 5.5vw;
+}
+
+.profile a{
+    color: var(--greenintense);
+    text-decoration: none;
+}

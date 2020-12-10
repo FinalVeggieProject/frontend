@@ -1,0 +1,66 @@
+:root {
+    --greenapp: #a6e637;
+    --greenbutton: #e2ffb0;
+    --greenintense: #197309;
+    --greenwhite: #edf5eb;
+  }
+
+.LogIn {
+    text-align: center;
+    color: var(--greenintense);
+}
+.LogIn h2{
+    width:90vw;
+    margin: 10vw auto;
+}
+
+.LogIn form{
+    display: flex;
+    flex-direction: column;
+    width: 70vw;
+    margin: 0 auto;
+}
+
+::-webkit-input-placeholder { 
+    color: var(--greenintense); 
+    opacity: .5;
+    font-size: 4.6vw;
+    font-style: italic;
+} 
+
+.LogIn form input{
+    background-color: var(--greenwhite);
+    margin-bottom: 7vw;
+    border: none;
+    border-bottom: 1px solid var(--greenintense);
+    padding-bottom: 5px;
+    font-size: 4vw;
+    color: var(--greenintense);
+    outline: none;
+}
+
+/* .LogIn form input:-internal-autofill-selected{
+    background-color: black !important;
+} */
+
+.LogIn form button {
+    margin: 4vw auto 0 auto;
+    width: 40vw;
+    font-size: 5vw;
+    padding: 2vw;
+    background-color: var(--greenbutton);
+    border: 2px solid var(--greenintense);
+    color: var(--greenintense);
+    border-radius: 6px;
+}
+
+.LogIn p {
+    font-size: 3.8vw;
+    text-align: left;
+    color: orangered;
+    font-style: italic;
+    margin-top: 6vw;
+    line-height: 5vw;
+    width: 100%;
+}
+

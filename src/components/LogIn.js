@@ -1,28 +1,31 @@
 import React from 'react'
+import '../styles/LogIn.css'
 
 const LogIn = (props)=>{
   return(
-    <div>
-      <h2>Log In</h2>
+    <div className="LogIn">
+      <h2>¡Entra en tu cuenta!</h2>
       <form onSubmit={props.submitLogIn}>
 
-        <label htmlFor="username">Username: </label>
+        <label htmlFor="username"></label>
         <input 
           type="text" 
           name="username" 
+          placeholder="Introduce tu nombre de usuario"
           value={props.loggingUser.username} 
           onChange={(event)=>props.changeHandlerLogIn(event.target)}
         />
 
-        <label htmlFor="password">Password: </label>
+        <label htmlFor="password"></label>
         <input 
           type="password" 
           name="password" 
+          placeholder="Introduce tu contraseña"
           value={props.loggingUser.password} 
           onChange={(event)=>props.changeHandlerLogIn(event.target)}
         />
 
-        <button type="submit">Log In</button>
+        <button type="submit">Iniciar sesión</button>
         {props.errorMessage && <p>{props.errorMessage}</p>}
       </form>
     </div>

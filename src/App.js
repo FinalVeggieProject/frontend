@@ -159,12 +159,16 @@ class App extends React.Component {
   render(){
     return (
       <div className="App">
+        <nav>
+          {!this.state.isLogged.username && <Link to="/signup">¡Únete!</Link>}
+          <br />
+          {!this.state.isLogged.username && <Link to="/login" className="login-button">Entrar</Link>}
+          <br />
+          {this.state.isLogged.username && <div><button className="logout-btn" onClick={()=>{this.logOut();}}>Log Out</button></div>}
+        <br />        
 
+        </nav>
 
-        {!this.state.isLogged.username && <Link to="/signup">Sign Up</Link>}
-        <br />
-        {!this.state.isLogged.username && <Link to="/login">Log In</Link>}
-        <br />
       
 
         <Route
@@ -199,7 +203,6 @@ class App extends React.Component {
 					
 							<Profile 
                   isLogged={this.state.isLogged}
-                  logOut={this.logOut}
                   displayUserRecipes={this.displayUserRecipes}
                 />
 						

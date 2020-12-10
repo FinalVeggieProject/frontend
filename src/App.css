@@ -1,40 +1,16 @@
+:root {
+  --greenapp: #a6e637;
+  --greenbutton: #e2ffb0;
+  --greenintense: #197309;
+  --greenwhite: #edf5eb;
+}
+
+body{
+  background-color: var(--greenwhite);
+}
+
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  font-size: 6vw;
 }
 
 .App .recipe-card{
@@ -47,13 +23,47 @@
   width: 100%;
 }
 
-.App .profile img{
-  width: 300px;
-  margin: 0 auto;
-  display: block;
-}
 .App .misdatos img{
   width: 300px;
   margin: 0 auto;
   display: block;
+}
+
+.App nav{
+  background-color: var(--greenapp);
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+  border-bottom: 1.7px solid black;
+  padding-bottom: .6%;
+}
+
+.App nav a,
+.App nav button{
+  margin: auto 1.2%;
+  text-decoration: none;
+  color: black;
+  background-color: var(--greenbutton);
+  padding: 1.2%;
+  border-radius: 5px;
+  border: 1px solid #4a7303;
+}
+
+.App .logout-btn{
+  display: inline-block;
+  width: 25vw;
+  font-size: 6vw;
+  padding: 5px 0;
+  margin-top: 8px;
+  margin-right: 10px;
+}
+
+/* .App nav a {
+
+} */
+
+.App .login-button {
+  margin-right: 2.5%;
 }

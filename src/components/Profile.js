@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import '../styles/Profile.css';
 
 class Profile extends React.Component {
  
@@ -8,7 +9,6 @@ class Profile extends React.Component {
     }
 
   render(){
-    const logout = this.props.logOut;
     return(
       <div className="profile">
         {
@@ -24,9 +24,7 @@ class Profile extends React.Component {
         <Link to="/allmyrecipes">Ver todas mis recetas</Link> <br/><br/>
   
   
-        <button onClick={()=>{
-          logout();
-        }}>Log Out</button>
+        
       </div>
     )
 

@@ -1,40 +1,45 @@
 import React from 'react'
+import '../styles/SignUp.css'
 
 const SignUp = (props)=>{
   return(
-    <div>
-      <h2>Sign Up</h2>
+    <div className="SignUp">
+      <h2>¡Crea una cuenta y únete!</h2>
       <form onSubmit={props.submitSignUp}>
 
-      <label htmlFor="username">Username: </label>
+      <label htmlFor="username"></label>
         <input 
           type="text" 
           name="username" 
           value={props.newUser.username} 
+          placeholder="Inserta un nombre válido"
           onChange={(event)=>props.changeHandlerSignUp(event.target)}
         />
 
-      <label htmlFor="image">Imagen de perfil: </label>
+      <label htmlFor="image"></label>
         <input 
           type="text" 
           name="image" 
+          placeholder="Inserta una url válida"
           value={props.newUser.image} 
           onChange={(event)=>props.changeHandlerSignUp(event.target)}
         />
 
-      <label htmlFor="email">E-mail: </label>
+      <label htmlFor="email"></label>
         <input 
           type="text" 
           name="email" 
+          placeholder="Inserta un e-mail válido"
           value={props.newUser.email} 
           onChange={(event)=>props.changeHandlerSignUp(event.target)}
         />
         
-        <label htmlFor="password">Password: </label>
+        <label htmlFor="password"></label>
         <input 
           type="password" 
           name="password" 
           value={props.newUser.password} 
+          placeholder="Al menos 8 carácteres y una mayúscula"
           onChange={(event)=>props.changeHandlerSignUp(event.target)}
         />
 
