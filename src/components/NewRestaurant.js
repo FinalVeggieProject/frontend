@@ -78,8 +78,7 @@ const NewRestaurant = (props)=>{
       </form><br/>
 
 
-
-
+      <Link to="/profile">Back to Profile</Link>
 
     </div>
   )

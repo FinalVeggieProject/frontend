@@ -70,9 +70,19 @@ class UserService {
   }
 
   addrestaurant = (restaurant) => {
-    console.log('holi');
     return this.service.post('/addrestaurant', restaurant)
       .then(response => response.data)
+  }
+
+  alluserrestaurants = () => {
+    console.log('holi')
+    return this.service.get('/alluserrestaurants')
+      .then(response => response.data)
+  }
+
+  showrestaurant = (id) => {
+    return this.service.get(`/restaurant/${id}`, {id})
+      .then(response => response)
   }
 
 
