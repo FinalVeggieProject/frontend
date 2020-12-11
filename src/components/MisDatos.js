@@ -95,7 +95,7 @@ class MisDatos extends React.Component {
             <p><button onClick={()=>this.toggleShowEditName(this.state.showEditPassword, 'showEditPassword')}>Editar</button></p><br /><br/><hr></hr>
 
 
-            <strong>Fecha de nacimiento:</strong> <p>{this.props.isLogged.birtdate}</p>
+            <strong>Fecha de nacimiento:</strong> <p>{this.props.isLogged.birthdate}</p>
             {this.state.showEditBirthdate && <EditInput 
                                                 nameValue="birthdate"
                                                 changeHandlerEdit={this.props.changeHandlerEdit}
@@ -107,7 +107,6 @@ class MisDatos extends React.Component {
 
 
 
-            {/* <strong>Image:</strong> <p>{props.isLogged.username}</p> */}
             </div>
         )
     }

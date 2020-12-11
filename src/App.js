@@ -18,16 +18,19 @@ import NewRestaurant from './components/NewRestaurant';
 class App extends React.Component {
 
 	state = {
-		isLogged: {},
+    isLogged: {},
+    updatedRecipe: {},
 		newUser: { username: '', password: '', email: '', image: '', name: '', lastName: '', birthdate: ''},
     loggingUser: { username: '', password: '', email: '', image: '', name: '', lastName: '', birthdate: ''},
     userToEdit: { username: '', password: '', email: '', image: '', name: '', lastName: '', birthdate: ''},
     newRecipe: {title: '', ingredients: '', process: '', difficulty: '', duration: '', author: '', image: '', id: ''},
     recipeToEdit: {title: '', ingredients: '', process: '', difficulty: '', duration: '', author: '', image: '', id: ''},
     newRestaurant: {name: '',owner: '', address: '', schedule: '', contact: '', typeOfFood: '', recomendations: '', webUrl: '', image: ''},
+    restaurantToEdit: {name: '',owner: '', address: '', schedule: '', contact: '', typeOfFood: '', recomendations: '', webUrl: '', image: ''},
     errorMessage: '',
     userRecipes: [],
-    userRestaurants: []
+    userRestaurants: [],
+    redirectRecipes: false
 	};
 
   service = new UserService();
@@ -76,6 +79,7 @@ class App extends React.Component {
     })
   };
   
+  
   logOut = ()=>{
     this.service.logout()
     .then((result)=>{
@@ -109,8 +113,7 @@ class App extends React.Component {
     event.preventDefault();
     this.service.addrecipe(this.state.newRecipe)
       .then(() => {
-        this.setState({newRecipe: {title: '', ingredients: '', process: '', difficulty: '', duration: '', author: '', image: '', id: ''}});
-        <Redirect to="/profile" />
+        this.setState({newRecipe: {title: '', ingredients: '', process: '', difficulty: '', duration: '', author: '', image: '', id: ''}, redirectRecipes: true});
       })
       .catch((err) => {
         console.log(err);
@@ -121,26 +124,6 @@ class App extends React.Component {
 	changeHandlerRecipe = (_eventTarget) => {
 		this.setState({ newRecipe: { ...this.state.newRecipe, [_eventTarget.name]: _eventTarget.value } });
   };
-
-  // ADD RESTAURANT CONFIG
-
-  submitRestaurant = (event) => {
-    event.preventDefault();
-    this.service.addrestaurant(this.state.newRestaurant)
-      .then(() => {
-        this.setState({newRestaurant: {name: '',  owner: '', address: '', schedule: '', contact: '', typeOfFood: '', recomendations: '', webUrl: '', image:''}});
-        <Redirect to="/profile" />
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-    
-  }; 
-
-	changeHandlerRestaurant = (_eventTarget) => {
-		this.setState({ newRestaurant: { ...this.state.newRestaurant, [_eventTarget.name]: _eventTarget.value } });
-  };
-
 
   // DISPLAY ALL USER RECIPES
   displayUserRecipes = () => {
@@ -161,14 +144,30 @@ class App extends React.Component {
     event.preventDefault();
 		this.service
     .editRecipe(this.state.recipeToEdit, event.target[0].name)
-      .then(()=>{
-        this.checkIfLoggedIn();
+      .then((result)=>{
+        this.setState({updatedRecipe: result});
+        // this.setState({recipeToEdit: this.state.recipeToEdit});
         <Redirect to="/allmyrecipes" />
       })
       .catch((err)=>{
         console.log('Sorry something went wrong on edit recipe.', err);
       })
   };
+
+  changeHandlerEditRecipe = (_eventTarget) => {
+      this.setState({ recipeToEdit: { ...this.state.recipeToEdit, [_eventTarget.name]: _eventTarget.value, id: _eventTarget.id} });
+  };
+
+  // DELETE RECIPES:
+  deleteRecipe = (id) => {
+    this.service.deleteRecipe(id)
+      .then((result)=>{
+        console.log(result);
+      })
+      .catch((err)=>{
+        console.log(err);
+      });
+  }
 
   // DISPLAY ALL USER RESTAURANTS
   displayUserRestaurants = () => {
@@ -182,11 +181,46 @@ class App extends React.Component {
       .catch((err)=>{
         console.log(err);
       })
-  }
-  
-  changeHandlerEditRecipe = (_eventTarget) => {
-		this.setState({ recipeToEdit: { ...this.state.recipeToEdit, [_eventTarget.name]: _eventTarget.value } });
+  } 
+ 
+  // ADD RESTAURANT CONFIG
+
+  submitRestaurant = (event) => {
+    event.preventDefault();
+    this.service.addrestaurant(this.state.newRestaurant)
+      .then(() => {
+        this.setState({newRestaurant: {name: '',  owner: '', address: '', schedule: '', contact: '', typeOfFood: '', recomendations: '', webUrl: '', image:''}});
+        <Redirect to="/profile" />
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    
+  }; 
+
+  changeHandlerRestaurant = (_eventTarget) => {
+    this.setState({ newRestaurant: { ...this.state.newRestaurant, [_eventTarget.name]: _eventTarget.value } });
   };
+
+  // EDIT RESTAURANTS
+  submitEditRestaurant = (event) => {
+    event.preventDefault();
+		this.service
+    .editRestaurant(this.state.restaurantToEdit, event.target[0].name)
+      .then((result)=>{
+        this.setState({updatedRestaurant: result});
+        // this.setState({recipeToEdit: this.state.recipeToEdit});
+        <Redirect to="/allmyrestaurants" />
+      })
+      .catch((err)=>{
+        console.log('Sorry something went wrong on edit restaurant.', err);
+      })
+  };
+
+  changeHandlerEditRestaurant = (_eventTarget) => {
+      this.setState({ restaurantToEdit: { ...this.state.restaurantToEdit, [_eventTarget.name]: _eventTarget.value, id: _eventTarget.id} });
+  };
+  
   
 	componentDidMount() {
     this.checkIfLoggedIn();
@@ -221,6 +255,12 @@ class App extends React.Component {
 					)}
 				/>
 
+        {
+          this.state.isLogged.username
+          ?<Redirect to="/profile" />  
+          :<Redirect to='/' />
+        }
+
 				<Route
 					path="/login"
 					render={() => (
@@ -239,8 +279,6 @@ class App extends React.Component {
 					
 							<Profile 
                   isLogged={this.state.isLogged}
-                  displayUserRecipes={this.displayUserRecipes}
-                  displayUserRestaurants={this.displayUserRestaurants}
                 />
               
 						
@@ -259,22 +297,35 @@ class App extends React.Component {
 					)}
 				/>
 
+        {
+          this.state.redirectRecipes
+          ?<Redirect to="/allmyrecipes" /> 
+          :(
         <Route
 					path="/addrecipe"
 					render={() => (
+            
+         
 							<NewRecipe 
                 submitRecipe={this.submitRecipe}
                 changeHandlerRecipe={this.changeHandlerRecipe}
                 newRecipe={this.state.newRecipe}
               />
 					)}
-				/>
+				/>)
+        }
+
+        
+        
+
 
         <Route
 					path="/allmyrecipes"
 					render={() => (
 							<AllUserRecipes 
                 userRecipes={this.state.userRecipes}
+                deleteRecipe={this.deleteRecipe}
+                displayUserRecipes={this.displayUserRecipes}
               />
 					)}
 				/>
@@ -282,6 +333,7 @@ class App extends React.Component {
         <Route
 					path="/recipe/:id"
 					render={(props) => (
+            
 							<Recipe 
                 {...props}
                 changeHandlerEdit={this.changeHandlerEditRecipe}
@@ -307,6 +359,7 @@ class App extends React.Component {
 					render={() => (
 							<AllUserRestaurants 
                 userRestaurants={this.state.userRestaurants}
+                displayUserRestaurants={this.displayUserRestaurants}
               />
 					)}
 				/>  
@@ -317,18 +370,17 @@ class App extends React.Component {
 					render={(props) => (
 							<Restaurant 
                 {...props}
-                changeHandlerEdit={this.changeHandlerEditRecipe}
-                submitEdit={this.submitEditRecipe}
-                recipeToEdit={this.state.recipeToEdit}
+                changeHandlerEdit={this.changeHandlerEditRestaurant}
+                submitEdit={this.submitEditRestaurant}
+                restaurantToEdit={this.state.restaurantToEdit}
               />
 					)}
 				/>  
        
-        {
-          this.state.isLogged.username
-          ?<Redirect to="/profile" />  
-          :<Redirect to='/' />
-        }
+       
+        
+
+
       </div>
     );
   }

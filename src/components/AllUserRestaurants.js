@@ -4,18 +4,19 @@ import {Link} from 'react-router-dom';
 
 const AllUserRestaurants = (props)=>{
 
-  
-
-    
-    return(
-        <div>
-        <Link to="/profile">Back to Profile</Link> <br/><br/>
-        <h2>All my restaurants:</h2>
+    // const componentDidMount = () => {
+        // }
+        
+        return(
+            <div>
+                {props.displayUserRestaurants()}
+                <Link to="/profile">Back to Profile</Link> <br/><br/>
+                <h2>All my restaurants:</h2>
        
-        {props.userRestaurants.map((restaurant, index)=>{
-            return <RestaurantCard key={index} restaurant={restaurant}/>
-        })}
-    </div>
+                {props.userRestaurants.map((restaurant, index)=>{
+                    return <RestaurantCard key={index} restaurant={restaurant}/>
+                })}
+            </div>
   )
 }
 

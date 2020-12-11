@@ -54,6 +54,13 @@ class UserService {
       })
   }
 
+  editRestaurant = (restaurantToEdit, valueToEdit) => {
+    return this.service.put("/edit-restaurant", {restaurantToEdit, valueToEdit})
+      .then(response => {
+        return response.data 
+      })
+  }  
+
   addrecipe = (recipe) => {
     return this.service.post("/addrecipe", recipe)
       .then(response => response.data);
@@ -82,6 +89,11 @@ class UserService {
   showrestaurant = (id) => {
     return this.service.get(`/restaurant/${id}`, {id})
       .then(response => response)
+  }
+
+  deleteRecipe = (id) => {
+    return this.service.post(`/recipe/${id}`, {id})
+      .then(response=>response.data)
   }
 
 

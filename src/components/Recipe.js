@@ -1,6 +1,6 @@
 import React from 'react';
 import UserService from '../services/UserService';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import EditInput from './EditInput';
 
 class Recipe extends React.Component{
@@ -12,20 +12,24 @@ class Recipe extends React.Component{
         showEditRecipeIngredients: false,
         showEditRecipeDifficulty: false,
         showEditRecipeDuration: false,
-        showEditRecipeProcess: false
+        showEditRecipeProcess: false,
+        redirect: false
 };
 
     service = new UserService();
 
-    componentDidMount(){
+    displayRecipe = () => {
         this.service.showrecipe(this.props.match.params.id)
             .then((result)=>{
-                this.setState({recipeInfo: result[0]});
+                if(result){
+                    this.setState({recipeInfo: result[0]});
+                }
             })
             .catch((err)=>{
                 console.log(err);
             });
     }
+
 
     toggleShowEditName = (valueToLook, valueToChange) => {
         valueToLook
@@ -36,6 +40,15 @@ class Recipe extends React.Component{
 
     render(){
 
+        if(!this.state.recipeInfo){
+            this.setState({redirect: true});
+        }
+
+        if(this.state.redirect) {
+            return <Redirect to='/profile'/>;
+          }
+
+        this.displayRecipe();
         return(
                 <div className="recipe">
                     <Link to="/allmyrecipes">Back to Recipes</Link> <br/><br/>
@@ -46,30 +59,83 @@ class Recipe extends React.Component{
                                                 changeHandlerEdit={this.props.changeHandlerEdit}
                                                 submitEdit={this.props.submitEdit}
                                                 userToEdit={this.props.recipeToEdit}
+                                                id={this.props.match.params.id}
+                                                recipeInfo={this.state.recipeInfo}
                                             />}
                     <button onClick={()=>this.toggleShowEditName(this.state.showEditRecipeImage, 'showEditRecipeImage')}>Editar</button> 
                     <br /><br/><hr></hr>
 
 
                     <h2>{this.state.recipeInfo.title}</h2>
+                    {this.state.showEditRecipeTitle && <EditInput 
+                                                nameValue="title"
+                                                changeHandlerEdit={this.props.changeHandlerEdit}
+                                                submitEdit={this.props.submitEdit}
+                                                userToEdit={this.props.recipeToEdit}
+                                                id={this.props.match.params.id}
+                                                recipeInfo={this.state.recipeInfo}
+                                            />}
+                    <button onClick={()=>this.toggleShowEditName(this.state.showEditRecipeTitle, 'showEditRecipeTitle')}>Editar</button> 
+                    <br /><br/><hr></hr>
 
 
 
                     <p>{this.state.recipeInfo.ingredients}</p>
 
+                    {this.state.showEditRecipeIngredients && <EditInput 
+                                                nameValue="ingredients"
+                                                changeHandlerEdit={this.props.changeHandlerEdit}
+                                                submitEdit={this.props.submitEdit}
+                                                userToEdit={this.props.recipeToEdit}
+                                                id={this.props.match.params.id}
+                                                recipeInfo={this.state.recipeInfo}
+                                            />}
+                    <button onClick={()=>this.toggleShowEditName(this.state.showEditRecipeImage, 'showEditRecipeImage')}>Editar</button> 
+                    <br /><br/><hr></hr>
+
 
 
                     <p>{this.state.recipeInfo.difficulty}</p>
+                    {this.state.showEditRecipeDifficulty && <EditInput 
+                                                nameValue="difficulty"
+                                                changeHandlerEdit={this.props.changeHandlerEdit}
+                                                submitEdit={this.props.submitEdit}
+                                                userToEdit={this.props.recipeToEdit}
+                                                id={this.props.match.params.id}
+                                                recipeInfo={this.state.recipeInfo}
+                                            />}
+                    <button onClick={()=>this.toggleShowEditName(this.state.showEditRecipeDifficulty, 'showEditRecipeDifficulty')}>Editar</button> 
+                    <br /><br/><hr></hr>
 
 
 
                     <p>{this.state.recipeInfo.duration}</p>
+                    {this.state.showEditRecipeDuration && <EditInput 
+                                                nameValue="duration"
+                                                changeHandlerEdit={this.props.changeHandlerEdit}
+                                                submitEdit={this.props.submitEdit}
+                                                userToEdit={this.props.recipeToEdit}
+                                                id={this.props.match.params.id}
+                                                recipeInfo={this.state.recipeInfo}
+                                            />}
+                    <button onClick={()=>this.toggleShowEditName(this.state.showEditRecipeDuration, 'showEditRecipeDuration')}>Editar</button> 
+                    <br /><br/><hr></hr>
 
 
 
                     <p>{this.state.recipeInfo.process}</p>
+                    {this.state.showEditRecipeProcess && <EditInput 
+                                                nameValue="process"
+                                                changeHandlerEdit={this.props.changeHandlerEdit}
+                                                submitEdit={this.props.submitEdit}
+                                                userToEdit={this.props.recipeToEdit}
+                                                id={this.props.match.params.id}
+                                                recipeInfo={this.state.recipeInfo}
+                                            />}
+                    <button onClick={()=>this.toggleShowEditName(this.state.showEditRecipeProcess, 'showEditRecipeProcess')}>Editar</button> 
+                    <br /><br/><hr></hr>
 
-
+                    
 
 
                 </div>

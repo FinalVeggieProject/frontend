@@ -67,3 +67,8 @@ body{
 .App .login-button {
   margin-right: 2.5%;
 }
+
+.App .recipe img,
+.App .restaurant img{
+  width: 300px;
+}
