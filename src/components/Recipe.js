@@ -13,12 +13,12 @@ class Recipe extends React.Component{
         showEditRecipeDifficulty: false,
         showEditRecipeDuration: false,
         showEditRecipeProcess: false,
-        redirect: false
 };
 
     service = new UserService();
 
     displayRecipe = () => {
+        
         this.service.showrecipe(this.props.match.params.id)
             .then((result)=>{
                 if(result){
@@ -40,15 +40,10 @@ class Recipe extends React.Component{
 
     render(){
 
-        if(!this.state.recipeInfo){
-            this.setState({redirect: true});
-        }
 
-        if(this.state.redirect) {
-            return <Redirect to='/profile'/>;
-          }
 
-        this.displayRecipe();
+        this.displayRecipe() 
+        
         return(
                 <div className="recipe">
                     <Link to="/allmyrecipes">Back to Recipes</Link> <br/><br/>

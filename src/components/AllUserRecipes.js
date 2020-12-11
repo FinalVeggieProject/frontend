@@ -3,9 +3,9 @@ import RecipeCard from './RecipeCard';
 import {Link} from 'react-router-dom';
 
 const AllUserRecipes = (props)=>{
+    props.displayUserRecipes()
     return(
         <div>
-         {props.displayUserRecipes()}
             <Link to="/profile">Back to Profile</Link> <br/><br/>
             <h2>All my recipes:</h2>
         

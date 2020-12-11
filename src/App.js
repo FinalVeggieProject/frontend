@@ -30,7 +30,8 @@ class App extends React.Component {
     errorMessage: '',
     userRecipes: [],
     userRestaurants: [],
-    redirectRecipes: false
+    redirectRecipes: false,
+    redirectRestaurants: false
 	};
 
   service = new UserService();
@@ -129,6 +130,7 @@ class App extends React.Component {
   displayUserRecipes = () => {
     this.service.alluserrecipes()
       .then((result)=>{
+        
         const newUserRecipesArr = result.map((recipe)=>{
           return recipe;
         })
@@ -189,7 +191,7 @@ class App extends React.Component {
     event.preventDefault();
     this.service.addrestaurant(this.state.newRestaurant)
       .then(() => {
-        this.setState({newRestaurant: {name: '',  owner: '', address: '', schedule: '', contact: '', typeOfFood: '', recomendations: '', webUrl: '', image:''}});
+        this.setState({newRestaurant: {name: '',  owner: '', address: '', schedule: '', contact: '', typeOfFood: '', recomendations: '', webUrl: '', image:''}, redirectRestaurants: true});
         <Redirect to="/profile" />
       })
       .catch((err) => {
@@ -279,6 +281,8 @@ class App extends React.Component {
 					
 							<Profile 
                   isLogged={this.state.isLogged}
+                  displayUserRecipes={this.displayUserRecipes}
+                  displayUserRestaurants={this.displayUserRestaurants}
                 />
               
 						
@@ -326,6 +330,7 @@ class App extends React.Component {
                 userRecipes={this.state.userRecipes}
                 deleteRecipe={this.deleteRecipe}
                 displayUserRecipes={this.displayUserRecipes}
+
               />
 					)}
 				/>
@@ -343,7 +348,11 @@ class App extends React.Component {
 					)}
 				/> 
 
-        <Route
+      {
+          this.state.redirectRestaurants
+          ?<Redirect to="/allmyrestaurants" /> 
+          :(
+            <Route
 					path="/addrestaurant"
 					render={() => (
 							<NewRestaurant
@@ -352,7 +361,12 @@ class App extends React.Component {
                 newRestaurant={this.state.newRestaurant}
               />
 					)}
-				/>  
+				/> )
+      }
+
+        
+
+         
 
         <Route
 					path="/allmyrestaurants"

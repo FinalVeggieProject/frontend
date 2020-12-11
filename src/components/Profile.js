@@ -3,6 +3,11 @@ import {Link} from 'react-router-dom';
 import '../styles/Profile.css';
 
 class Profile extends React.Component {
+ 
+    // componentDidMount(){
+    //   this.props.displayUserRecipes();
+    //   this.props.displayUserRestaurants();
+    // }
 
   render(){
     return(
