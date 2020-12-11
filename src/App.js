@@ -12,6 +12,7 @@ import NewRecipe from './components/NewRecipe';
 import AllUserRecipes from './components/AllUserRecipes';
 import AllUserRestaurants from './components/AllUserRestaurants'
 import Recipe from './components/Recipe';
+import Restaurant from './components/Restaurant'
 import NewRestaurant from './components/NewRestaurant';
 
 class App extends React.Component {
@@ -300,6 +301,7 @@ class App extends React.Component {
               />
 					)}
 				/>  
+
         <Route
 					path="/allmyrestaurants"
 					render={() => (
@@ -307,7 +309,20 @@ class App extends React.Component {
                 userRestaurants={this.state.userRestaurants}
               />
 					)}
-				/>   
+				/>  
+
+
+        <Route
+					path="/restaurant/:id"
+					render={(props) => (
+							<Restaurant 
+                {...props}
+                changeHandlerEdit={this.changeHandlerEditRecipe}
+                submitEdit={this.submitEditRecipe}
+                recipeToEdit={this.state.recipeToEdit}
+              />
+					)}
+				/>  
        
         {
           this.state.isLogged.username

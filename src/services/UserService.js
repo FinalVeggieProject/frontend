@@ -75,7 +75,6 @@ class UserService {
   }
 
   alluserrestaurants = () => {
-    console.log('holi')
     return this.service.get('/alluserrestaurants')
       .then(response => response.data)
   }
