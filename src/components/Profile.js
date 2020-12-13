@@ -3,11 +3,7 @@ import {Link} from 'react-router-dom';
 import '../styles/Profile.css';
 
 class Profile extends React.Component {
- 
-    // componentDidMount(){
-    //   this.props.displayUserRecipes();
-    //   this.props.displayUserRestaurants();
-    // }
+
 
   render(){
     return(
@@ -17,7 +13,7 @@ class Profile extends React.Component {
           ? <img src={this.props.isLogged.image} alt={this.props.isLogged.username} />
           :<img src="/images/profile.png" alt="default profile"/>
         }
-        <h2>Bienvenido {this.props.isLogged.username}!</h2>
+        <h2>Bienvenido <span>{this.props.isLogged.username}</span>!</h2>
         <p>{this.props.isLogged.email}</p>
   
         <Link to="/misdatos">Mis Datos</Link> <br/><br/>
@@ -30,7 +26,7 @@ class Profile extends React.Component {
         
       </div>
     )
-
+ 
   }
 }
 export default Profile;

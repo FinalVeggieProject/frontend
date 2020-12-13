@@ -1,27 +1,25 @@
 :root {
-  --greenapp: #a6e637;
-  --greenbutton: #e2ffb0;
-  --greenintense: #197309;
-  --greenwhite: #edf5eb;
+  --primary: #313631;
+  --secondary: #59A96A;
+  --button: #9BDEAC;
+  --background: #FFFFFF;
+  --details: #B88E8D;
+}
+html{
+  padding-bottom: 100px;
 }
 
 body{
-  background-color: var(--greenwhite);
+  background-color: var(--background);
 }
 
 .App {
   font-size: 6vw;
 }
 
-.App .recipe-card{
-  border: 2px solid black;
-  width: 300px;
-  margin: 20px auto;
-}
 
-.App .recipe-card img{
-  width: 100%;
-}
+
+
 
 .App .misdatos img{
   width: 300px;
@@ -30,25 +28,28 @@ body{
 }
 
 .App nav{
-  background-color: var(--greenapp);
+  background-color: var(--primary);
   display: flex;
   width: 100%;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: flex-end;
-  border-bottom: 1.7px solid black;
   padding-bottom: .6%;
+  align-items: center;
 }
 
 .App nav a,
 .App nav button{
-  margin: auto 1.2%;
+  margin-right: 2.1%;
+  width: 17vw;
+  text-align: center;
   text-decoration: none;
   color: black;
-  background-color: var(--greenbutton);
-  padding: 1.2%;
-  border-radius: 5px;
-  border: 1px solid #4a7303;
+  background-color: var(--button);
+  padding: 2.2%;
+  border-radius: 10px;
+  opacity: .7;
+  font-size: 5vw;
 }
 
 .App .logout-btn{

@@ -141,15 +141,16 @@ class App extends React.Component {
       });
   }
 
+  
+
   //EDIT RECIPES
   submitEditRecipe = (event) => {
     event.preventDefault();
 		this.service
     .editRecipe(this.state.recipeToEdit, event.target[0].name)
       .then((result)=>{
-        this.setState({updatedRecipe: result});
-        // this.setState({recipeToEdit: this.state.recipeToEdit});
-        <Redirect to="/allmyrecipes" />
+        console.log(result);
+        this.displayUserRecipes();
       })
       .catch((err)=>{
         console.log('Sorry something went wrong on edit recipe.', err);
@@ -226,13 +227,21 @@ class App extends React.Component {
   
 	componentDidMount() {
     this.checkIfLoggedIn();
+    this.displayUserRecipes();
+    this.displayUserRestaurants();
   }
+
+  // componentDidU() {
+  //   this.checkIfLoggedIn();
+  //   this.displayUserRecipes();
+  //   this.displayUserRestaurants();
+  // }
   
   render(){
     return (
       <div className="App">
         <nav>
-          {!this.state.isLogged.username && <Link to="/signup">¡Únete!</Link>}
+          {!this.state.isLogged.username && <Link to="/signup">Unirse</Link>}
           <br />
           {!this.state.isLogged.username && <Link to="/login" className="login-button">Entrar</Link>}
           <br />

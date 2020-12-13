@@ -1,13 +1,14 @@
 :root {
-    --greenapp: #a6e637;
-    --greenbutton: #e2ffb0;
-    --greenintense: #197309;
-    --greenwhite: #edf5eb;
+    --primary: #313631;
+    --secondary: #59A96A;
+    --button: #9BDEAC;
+    --background: #FFFFFF;
+    --details: #B88E8D;
   }
-
+  
 .SignUp {
     text-align: center;
-    color: var(--greenintense);
+    color: var(--secondary);
 }
 
 .SignUp form{
@@ -18,7 +19,7 @@
 }
 
 ::-webkit-input-placeholder { 
-    color: var(--greenintense); 
+    color: var(--secondary); 
     opacity: .5;
     font-size: 3.75vw;
     font-style: italic;
@@ -27,12 +28,12 @@
 .SignUp form input{
     margin-bottom: 5vw;
     border: none;
-    border-bottom: 1px solid var(--greenintense);
+    border-bottom: 1px solid var(--secondary);
     padding-bottom: 5px;
     font-size: 4vw;
-    color: var(--greenintense);
+    color: var(--secondary);
     outline: none;
-    background-color: var(--greenwhite);
+    background-color: var(--background);
 }
 
 /* .SignUp form input:-internal-autofill-selected{
@@ -40,14 +41,15 @@
 } */
 
 .SignUp form button {
-    margin: 4vw auto 0 auto;
+    margin:8vw auto 0 auto;
     width: 40vw;
     font-size: 5vw;
     padding: 2vw;
-    background-color: var(--greenbutton);
-    border: 2px solid var(--greenintense);
-    color: var(--greenintense);
-    border-radius: 6px;
+    background-color: var(--button);
+    color: black;
+    border-radius: 16px;
+    outline: none;
+    border: 1px solid var(--primary);
 }
 
 .SignUp p {

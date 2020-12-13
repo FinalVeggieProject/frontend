@@ -1,19 +1,21 @@
 import React from 'react';
 import RecipeCard from './RecipeCard';
 import {Link} from 'react-router-dom';
+import '../styles/AllUserRecipes.css';
+
 
 const AllUserRecipes = (props)=>{
-    props.displayUserRecipes()
+    // props.displayUserRecipes()
     return(
-        <div>
-            <Link to="/profile">Back to Profile</Link> <br/><br/>
-            <h2>All my recipes:</h2>
+        <div className="userRecipes">
+            <Link to="/profile">Volver a mi pefil</Link> <br/><br/>
+            <h2>Mis recetas:</h2>
         
             {props.userRecipes.map((recipe, index)=>{
                 return (
                     <div key={index}>
                         <RecipeCard recipe={recipe} deleteRecipe={props.deleteRecipe}/>
-                        <button onClick={()=>{props.deleteRecipe(recipe._id)}}>Eliminar Receta</button>
+                        <button className="delete-button" onClick={()=>{props.deleteRecipe(recipe._id)}}> <img className="trash" src="/images/trash.svg" alt="trash icon"/> </button>
                     </div>
                     )
             })}

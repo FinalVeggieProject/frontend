@@ -1,0 +1,36 @@
+:root {
+    --primary: #313631;
+    --secondary: #59A96A;
+    --button: #9BDEAC;
+    --background: #FFFFFF;
+    --details: #B88E8D;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+.recipe-card{
+    border: 2px solid var(--primary);
+    width: 90%;
+    margin: 40px auto 0 auto;
+    padding: 20px;
+    border-radius: 20px 20px 20px 0;
+    -webkit-box-shadow: 10px 10px 21px -12px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 21px -12px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 21px -12px rgba(0,0,0,0.75);
+  }
+
+.recipe-card img{
+    width: 100%;
+    border-radius: 12px 12px 0 0;
+    border: 1px solid var(--primary);
+}
+
+.recipe-card h3{
+    color: var(--primary);
+    font-size: 9vw;
+    margin: 10px 0;
+    text-decoration: underline;
+    text-decoration-color: white;
+}
