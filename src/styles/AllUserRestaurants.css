@@ -6,11 +6,11 @@
     --details: #dd7977;
   }
 
-  .userRecipes{
+  .userRestaurants{
       padding-top: 5vw;
   }
 
-  .userRecipes>a{
+  .userRestaurants>a{
     margin-left: 6vw;
     width: 40vw;
     position: relative;
@@ -26,7 +26,7 @@
     text-decoration: none;
   }
 
-  .userRecipes h2{
+  .userRestaurants h2{
       color: var(--secondary);
       margin-left: 5vw;
       margin-top: -5vw;
@@ -34,7 +34,7 @@
       text-decoration: underline;
   }
 
-  .userRecipes .delete-button{
+  .userRestaurants .delete-button{
       background-color: var(--details);
       border-radius: 0 0 20px 20px;
       position: absolute;
@@ -42,6 +42,6 @@
       border-top: none;
       width: 14vw;  
 }
-/* .userRecipes .delete-image{
-    width: 5vw;
-} */
+.userRestaurants .trash{
+    width: 4.5vw;
+}

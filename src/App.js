@@ -161,16 +161,7 @@ class App extends React.Component {
       this.setState({ recipeToEdit: { ...this.state.recipeToEdit, [_eventTarget.name]: _eventTarget.value, id: _eventTarget.id} });
   };
 
-  // DELETE RECIPES:
-  deleteRecipe = (id) => {
-    this.service.deleteRecipe(id)
-      .then((result)=>{
-        console.log(result);
-      })
-      .catch((err)=>{
-        console.log(err);
-      });
-  }
+
 
   // DISPLAY ALL USER RESTAURANTS
   displayUserRestaurants = () => {
@@ -212,8 +203,6 @@ class App extends React.Component {
     .editRestaurant(this.state.restaurantToEdit, event.target[0].name)
       .then((result)=>{
         this.setState({updatedRestaurant: result});
-        // this.setState({recipeToEdit: this.state.recipeToEdit});
-        <Redirect to="/allmyrestaurants" />
       })
       .catch((err)=>{
         console.log('Sorry something went wrong on edit restaurant.', err);
@@ -227,16 +216,13 @@ class App extends React.Component {
   
 	componentDidMount() {
     this.checkIfLoggedIn();
-    this.displayUserRecipes();
-    this.displayUserRestaurants();
+    // this.displayUserRecipes();
+    // this.displayUserRestaurants();
   }
 
-  // componentDidU() {
-  //   this.checkIfLoggedIn();
-  //   this.displayUserRecipes();
-  //   this.displayUserRestaurants();
-  // }
-  
+
+      // componentDidMount(){
+    // }
   render(){
     return (
       <div className="App">
@@ -337,7 +323,6 @@ class App extends React.Component {
 					render={() => (
 							<AllUserRecipes 
                 userRecipes={this.state.userRecipes}
-                deleteRecipe={this.deleteRecipe}
                 displayUserRecipes={this.displayUserRecipes}
 
               />

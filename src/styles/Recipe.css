@@ -1,0 +1,54 @@
+:root {
+    --primary: #313631;
+    --secondary: #59A96A;
+    --button: #9BDEAC;
+    --background: #FFFFFF;
+    --details: #B88E8D;
+}
+html{
+    padding-bottom: 0;
+}
+
+.recipe a {
+    margin-left: 6vw;
+    width: 40vw;
+    position: relative;
+    left: 59%;
+    top: 3vw;
+    font-size: 4vw;
+    padding: 1vw 2vw;
+    background-color: var(--button);
+    color: black;
+    border-radius: 16px;
+    outline: none;
+    border: 1px solid var(--primary);
+    text-decoration: none;
+}
+
+.recipe img{
+    width: 102%;
+    position: relative;
+    left: -1%;
+    border: 2px solid var(--primary);
+}
+
+.recipe h2 {
+    color: var(--primary);
+    margin: 3vw;
+    text-decoration: underline;
+}
+
+.recipe h4{
+    margin-top: 0;
+    margin-left: 3vw;
+}
+
+.recipe p {
+    margin-top: -3vw;
+    margin-left: 3vw;
+    margin-bottom: 8vw;
+}
+
+.recipe .rating{
+    margin-top: -5vw;
+}

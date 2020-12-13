@@ -96,6 +96,11 @@ class UserService {
       .then(response=>response.data)
   }
 
+  deleteRestaurant = (id) => {
+    return this.service.post(`/restaurant/${id}`, {id})
+      .then(response=>response.data)
+  }
+
 
 
 }

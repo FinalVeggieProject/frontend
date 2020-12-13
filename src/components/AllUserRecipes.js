@@ -1,27 +1,49 @@
 import React from 'react';
 import RecipeCard from './RecipeCard';
+import UserService from '../services/UserService';
 import {Link} from 'react-router-dom';
 import '../styles/AllUserRecipes.css';
 
 
-const AllUserRecipes = (props)=>{
-    // props.displayUserRecipes()
-    return(
-        <div className="userRecipes">
-            <Link to="/profile">Volver a mi pefil</Link> <br/><br/>
-            <h2>Mis recetas:</h2>
-        
-            {props.userRecipes.map((recipe, index)=>{
-                return (
-                    <div key={index}>
-                        <RecipeCard recipe={recipe} deleteRecipe={props.deleteRecipe}/>
-                        <button className="delete-button" onClick={()=>{props.deleteRecipe(recipe._id)}}> <img className="trash" src="/images/trash.svg" alt="trash icon"/> </button>
-                    </div>
-                    )
-            })}
-        
-        </div>
-  )
-}
+class AllUserRecipes extends React.Component {
+
+    service = new UserService();
+
+    componentDidMount(){
+        this.props.displayUserRecipes();
+    }
+
+
+    // DELETE RECIPES:
+    deleteRecipe = (id) => {
+    this.service.deleteRecipe(id)
+      .then(()=>{
+        this.props.displayUserRecipes();
+      })
+      .catch((err)=>{
+        console.log(err);
+      });
+  }
+
+    render(){
+        return(
+            <div className="userRecipes">
+                <Link to="/profile">Volver a mi pefil</Link> <br/><br/>
+                <h2>Mis recetas:</h2>
+            
+                {this.props.userRecipes.map((recipe, index)=>{
+                    return (
+                        <div key={index}>
+                            <RecipeCard recipe={recipe} deleteRecipe={this.deleteRecipe}/>
+                            <button className="delete-button" onClick={()=>{this.deleteRecipe(recipe._id)}}> <i className="delete-image fas fa-trash-alt"></i> </button>
+                        </div>
+                        )
+                })}
+            </div>
+        )
+    }
+} 
+    // this.props.displayUserRecipes()
+
 
 export default AllUserRecipes;

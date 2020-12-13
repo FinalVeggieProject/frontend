@@ -42,7 +42,8 @@ body{
 .App nav button{
   margin-right: 2.1%;
   width: 17vw;
-  text-align: center;
+  display: flex;
+  justify-content: center;
   text-decoration: none;
   color: black;
   background-color: var(--button);
@@ -65,11 +66,7 @@ body{
 
 } */
 
-.App .login-button {
+/* .App .login-button {
   margin-right: 2.5%;
-}
+} */
 
-.App .recipe img,
-.App .restaurant img{
-  width: 300px;
-}

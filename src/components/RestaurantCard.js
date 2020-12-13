@@ -9,7 +9,11 @@ const RestaurantCard = (props)=>{
     return(
         <Link to={url}>    
             <div className="recipe-card">
-                <img src={image} alt={name}/>
+            {
+                image
+                ?<img src={image} alt={name} />
+                :<img src="/images/default.jpg" alt="default recipe pic"/>
+                }
                 <h3>{name}</h3>
             </div>
         </Link>

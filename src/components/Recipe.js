@@ -1,7 +1,8 @@
 import React from 'react';
 import UserService from '../services/UserService';
 import {Link} from 'react-router-dom';
-import EditInput from './EditInput';
+// import EditInput from './EditInput';
+import '../styles/Recipe.css';
 
 class Recipe extends React.Component{
 
@@ -31,6 +32,8 @@ class Recipe extends React.Component{
             });
     }
 
+    
+
 
 
     toggleShowEditName = (valueToLook, valueToChange) => {
@@ -56,7 +59,7 @@ class Recipe extends React.Component{
                     <Link to="/allmyrecipes">Back to Recipes</Link> <br/><br/>
 
                     <img src={this.state.recipeInfo.image} alt={this.state.recipeInfo.title}/>
-                    {this.state.showEditRecipeImage && <EditInput 
+                    {/* {this.state.showEditRecipeImage && <EditInput 
                                                 nameValue="image"
                                                 changeHandlerEdit={this.props.changeHandlerEdit}
                                                 submitEdit={this.props.submitEdit, this.displayRecipe}
@@ -66,11 +69,11 @@ class Recipe extends React.Component{
                                                 recipe
                                             />}
                     <button onClick={()=>this.toggleShowEditName(this.state.showEditRecipeImage, 'showEditRecipeImage')}>Editar</button> 
-                    <br /><br/><hr></hr>
+                    <br /><br/><hr></hr> */}
 
 
                     <h2>{this.state.recipeInfo.title}</h2>
-                    {this.state.showEditRecipeTitle && <EditInput 
+                    {/* {this.state.showEditRecipeTitle && <EditInput 
                                                 nameValue="title"
                                                 changeHandlerEdit={this.props.changeHandlerEdit}
                                                 submitEdit={this.props.submitEdit}
@@ -79,13 +82,13 @@ class Recipe extends React.Component{
                                                 recipeInfo={this.state.recipeInfo}
                                             />}
                     <button onClick={()=>this.toggleShowEditName(this.state.showEditRecipeTitle, 'showEditRecipeTitle')}>Editar</button> 
-                    <br /><br/><hr></hr>
+                    <br /><br/><hr></hr> */}
 
 
-
+                    <h4>Ingredientes:</h4>
                     <p>{this.state.recipeInfo.ingredients}</p>
 
-                    {this.state.showEditRecipeIngredients && <EditInput 
+                    {/* {this.state.showEditRecipeIngredients && <EditInput 
                                                 nameValue="ingredients"
                                                 changeHandlerEdit={this.props.changeHandlerEdit}
                                                 submitEdit={this.props.submitEdit}
@@ -94,12 +97,46 @@ class Recipe extends React.Component{
                                                 recipeInfo={this.state.recipeInfo}
                                             />}
                     <button onClick={()=>this.toggleShowEditName(this.state.showEditRecipeImage, 'showEditRecipeImage')}>Editar</button> 
-                    <br /><br/><hr></hr>
+                    <br /><br/><hr></hr> */}
 
 
-
-                    <p>{this.state.recipeInfo.difficulty}</p>
-                    {this.state.showEditRecipeDifficulty && <EditInput 
+                    <h4>Dificultad (1-5):</h4>
+                    {
+                        this.state.recipeInfo.difficulty===1 &&   <p className="rating">
+                                                                    <i className="fas fa-star"></i>
+                                                                </p>
+                    }
+                    {
+                        this.state.recipeInfo.difficulty===2 &&   <p className="rating">
+                                                                    <i className="fas fa-star"></i>
+                                                                    <i className="fas fa-star"></i>
+                                                                </p>
+                    }
+                    {
+                        this.state.recipeInfo.difficulty===3 &&   <p className="rating">
+                                                                    <i className="fas fa-star"></i>
+                                                                    <i className="fas fa-star"></i>
+                                                                    <i className="fas fa-star"></i>
+                                                                </p>
+                    }
+                    {
+                        this.state.recipeInfo.difficulty===4 &&   <p className="rating">
+                                                                    <i className="fas fa-star"></i>
+                                                                    <i className="fas fa-star"></i>
+                                                                    <i className="fas fa-star"></i>
+                                                                    <i className="fas fa-star"></i>
+                                                                </p>
+                    }
+                    {
+                        this.state.recipeInfo.difficulty===5 &&   <p className="rating">
+                                                                    <i className="fas fa-star"></i>
+                                                                    <i className="fas fa-star"></i>
+                                                                    <i className="fas fa-star"></i>
+                                                                    <i className="fas fa-star"></i>
+                                                                    <i className="fas fa-star"></i>
+                                                                </p>
+                    }
+                    {/* {this.state.showEditRecipeDifficulty && <EditInput 
                                                 nameValue="difficulty"
                                                 changeHandlerEdit={this.props.changeHandlerEdit}
                                                 submitEdit={this.props.submitEdit}
@@ -108,12 +145,12 @@ class Recipe extends React.Component{
                                                 recipeInfo={this.state.recipeInfo}
                                             />}
                     <button onClick={()=>this.toggleShowEditName(this.state.showEditRecipeDifficulty, 'showEditRecipeDifficulty')}>Editar</button> 
-                    <br /><br/><hr></hr>
+                    <br /><br/><hr></hr> */}
 
 
-
+                    <h4>Tiempo (min):</h4>
                     <p>{this.state.recipeInfo.duration}</p>
-                    {this.state.showEditRecipeDuration && <EditInput 
+                    {/* {this.state.showEditRecipeDuration && <EditInput 
                                                 nameValue="duration"
                                                 changeHandlerEdit={this.props.changeHandlerEdit}
                                                 submitEdit={this.props.submitEdit}
@@ -122,12 +159,12 @@ class Recipe extends React.Component{
                                                 recipeInfo={this.state.recipeInfo}
                                             />}
                     <button onClick={()=>this.toggleShowEditName(this.state.showEditRecipeDuration, 'showEditRecipeDuration')}>Editar</button> 
-                    <br /><br/><hr></hr>
+                    <br /><br/><hr></hr> */}
 
 
-
+                    <h4>Elaboración:</h4>
                     <p>{this.state.recipeInfo.process}</p>
-                    {this.state.showEditRecipeProcess && <EditInput 
+                    {/* {this.state.showEditRecipeProcess && <EditInput 
                                                 nameValue="process"
                                                 changeHandlerEdit={this.props.changeHandlerEdit}
                                                 submitEdit={this.props.submitEdit}
@@ -136,7 +173,7 @@ class Recipe extends React.Component{
                                                 recipeInfo={this.state.recipeInfo}
                                             />}
                     <button onClick={()=>this.toggleShowEditName(this.state.showEditRecipeProcess, 'showEditRecipeProcess')}>Editar</button> 
-                    <br /><br/><hr></hr>
+                    <br /><br/><hr></hr> */}
 
                     
 

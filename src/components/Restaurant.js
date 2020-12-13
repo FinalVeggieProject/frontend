@@ -1,7 +1,7 @@
 import React from 'react';
 import UserService from '../services/UserService';
 import {Link} from 'react-router-dom';
-import EditInput from './EditInput';
+// import EditInput from './EditInput';
 
 class Restaurant extends React.Component{
 
@@ -45,9 +45,12 @@ class Restaurant extends React.Component{
         : this.setState({[valueToChange]: true})
     }    
 
+    componentDidMount(){
+        this.displayRestaurant();
+    }
+
 
     render(){
-        this.displayRestaurant();
         return(
                 <div className="recipe">
                     <Link to="/allmyrestaurants">Back to Restaurants</Link> <br/><br/>
@@ -66,7 +69,7 @@ class Restaurant extends React.Component{
 
 
                     <h2>{this.state.restaurantInfo.name}</h2>
-                    {this.state.showEditRestaurantName && <EditInput 
+                    {/* {this.state.showEditRestaurantName && <EditInput 
                                                 nameValue="name"
                                                 changeHandlerEdit={this.props.changeHandlerEdit}
                                                 submitEdit={this.props.submitEdit}
@@ -75,7 +78,7 @@ class Restaurant extends React.Component{
                                                 restaurantInfo={this.state.restaurantInfo}
                                             />}
                     <button onClick={()=>this.toggleShowEditName(this.state.showEditRestaurantName, 'showEditRestaurantName')}>Editar</button> 
-                    <br /><br/><hr></hr>
+                    <br /><br/><hr></hr> */}
 
 
 
