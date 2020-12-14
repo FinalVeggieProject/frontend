@@ -1,6 +1,7 @@
 import React from 'react';
 import EditInput from './EditInput';
 import {Link} from 'react-router-dom';
+import '../styles/MisDatos.css';
 
 class MisDatos extends React.Component {
 
@@ -29,18 +30,21 @@ class MisDatos extends React.Component {
     render(){
         return(
             <div className="misdatos">
+            <Link to="/profile">Back to Profile</Link> <br/><br/>
             <h2>Mis datos</h2>
 
-            <Link to="/profile">Back to Profile</Link> <br/><br/>
 
-            <strong>Imagen de perfil:</strong> <img src={this.props.isLogged.image} alt={this.props.isLogged.name} />
+            <strong className="image-title">Imagen de perfil:</strong> <img src={this.props.isLogged.image} alt={this.props.isLogged.name} />
+            <button className="profile-edit-button" onClick={()=>this.toggleShowEditName(this.state.showEditImage, 'showEditImage')}>EDITAR</button> 
+            <div className="image-input">
             {this.state.showEditImage && <EditInput 
                                                 nameValue="image"
                                                 changeHandlerEdit={this.props.changeHandlerEdit}
                                                 submitEdit={this.props.submitEdit}
                                                 userToEdit={this.props.userToEdit}
                                             />}
-            <button onClick={()=>this.toggleShowEditName(this.state.showEditImage, 'showEditImage')}>Editar</button> <br /><br/><hr></hr>
+            </div>
+            <br /><br/><hr></hr>
     
             <strong>Nombre:</strong> <p>{this.props.isLogged.name}</p>
             {this.state.showEditName && <EditInput 
@@ -85,7 +89,7 @@ class MisDatos extends React.Component {
 
 
             
-            <strong>Contraseña:</strong> <br/><br/> <strong>*********</strong>
+            <strong>Contraseña:</strong> <br/><br/> <p className="password-text">*********</p>
             {this.state.showEditPassword && <EditInput 
                                                 nameValue="password"
                                                 changeHandlerEdit={this.props.changeHandlerEdit}

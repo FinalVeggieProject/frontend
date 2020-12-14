@@ -18,15 +18,6 @@ body{
 }
 
 
-
-
-
-.App .misdatos img{
-  width: 300px;
-  margin: 0 auto;
-  display: block;
-}
-
 .App nav{
   background-color: var(--primary);
   display: flex;
@@ -61,12 +52,4 @@ body{
   margin-top: 8px;
   margin-right: 10px;
 }
-
-/* .App nav a {
-
-} */
-
-/* .App .login-button {
-  margin-right: 2.5%;
-} */
 

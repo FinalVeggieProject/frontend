@@ -1,0 +1,86 @@
+.misdatos {
+    margin-left: 4vw;
+    margin-right: 4vw;
+    
+}
+
+.misdatos a {
+    position: relative;
+    left: 65vw;
+    top: 3vw;
+    outline: none;
+    width: 40vw;
+    font-size: 3.6vw;
+    padding: 1vw 2vw;
+    background-color: var(--button);
+    color: black;
+    border-radius: 16px;
+    border: 1px solid var(--primary);
+    text-decoration: none;
+}
+
+.misdatos h2 {
+    margin-top: 0vw;
+    text-decoration: underline;
+}
+
+.misdatos img{
+    position: relative;
+    top: 20px;
+    border: 4px solid var(--primary);
+    border-radius: 25px 25px 0 25px;
+    width: 82vw;
+    margin: 0 auto;
+    display: block;
+}
+
+.misdatos strong {
+    text-decoration: underline;
+}
+
+.misdatos .image-title {
+    position: relative;
+    top: -16px;
+}
+.misdatos button{
+    background-color: var(--button);
+    border-radius: 20px;
+    width: 25vw; 
+}
+
+/* .misdatos input button {
+    margin-left: 20px; Hay que añadir esto mediante una clase en editInput
+} */
+
+.misdatos .profile-edit-button{
+    background-color: var(--button);
+    border-radius: 0 0 20px 20px;
+    margin-left: 0;
+    position: absolute;
+    left: 66%;
+    border-top: none;
+    width: 25vw;  
+    margin-top: 20px;
+}
+
+
+.misdatos input {
+    margin-bottom: 5vw;
+    border: none;
+    border-bottom: 1px solid var(--secondary);
+    padding-bottom: 5px;
+    font-size: 4vw;
+    color: var(--secondary);
+    outline: none;
+    background-color: var(--background);
+}
+.misdatos .image-input {
+    margin-top: 50px;
+    margin-bottom: -30px;
+}
+
+
+.misdatos .password-text {
+    font-weight: bold;
+    margin-top: 0;
+}
