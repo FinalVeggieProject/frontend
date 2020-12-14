@@ -325,10 +325,10 @@ class App extends React.Component {
           )}
         />
 
-      {
+      {/* {
           this.state.redirectRestaurants
           ?<Redirect to="/allmyrestaurants" /> 
-          :(
+          :( */}
             <Route
 					path="/addrestaurant"
 					render={() => (
@@ -338,8 +338,9 @@ class App extends React.Component {
                 newRestaurant={this.state.newRestaurant}
               />
 					)}
-				/> )
-      }
+				/> 
+        {/* )
+      } */}
 
         <Route
 					path="/allmyrestaurants"
