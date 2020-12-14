@@ -5,25 +5,26 @@ import {Link} from 'react-router-dom';
 
 class Restaurant extends React.Component{
 
-    state = {
-        restaurantInfo: {},
-        showEditRestaurantName: false,
-        showEditRestaurantAddress: false,
-        showEditRestaurantSchedule: false,
-        showEditRestaurantContact: false,
-        showEditRestaurantTypeOfFood: false,
-        showEditRestaurantRecomendations: false,
-        howEditRestaurantWebUrl: false,
-        howEditRestaurantImage: false
-};
+    constructor(props){
+        super(props)
+
+        this.state = {
+            restaurantInfo: {}
+        }
+
+        this.url = `/editrestaurant/${this.props.match.params.id}`
+    }
+
 
     service = new UserService();
 
     displayRestaurant(){
+
         this.service.showrestaurant(this.props.match.params.id)
             .then((result)=>{
                 if(result){
                     this.setState({restaurantInfo: result.data[0]});
+                    return;
                 }
             })
             .catch((err)=>{
@@ -31,13 +32,6 @@ class Restaurant extends React.Component{
             });
     };
 
-    // componentDidMount(){
-        
-    // };
-
-    // componentDidUpdate(){
-    //     this.displayRestaurant();
-    // }
 
     toggleShowEditName = (valueToLook, valueToChange) => {
         valueToLook
@@ -56,29 +50,11 @@ class Restaurant extends React.Component{
                     <Link to="/allmyrestaurants">Back to Restaurants</Link> <br/><br/>
 
                     <img src={this.state.restaurantInfo.image} alt={this.state.restaurantInfo.name}/>
-                    {/* {this.state.showEditRestaurantImage && <EditInput 
-                                                nameValue="image"
-                                                changeHandlerEdit={this.props.changeHandlerEdit}
-                                                submitEdit={this.props.submitEdit}
-                                                userToEdit={this.props.restaurantToEdit}
-                                                id={this.props.match.params.id}
-                                                restaurantInfo={this.state.restaurantInfo}
-                                            />}
-                    <button onClick={()=>this.toggleShowEditName(this.state.showEditRestaurantImage, 'showEditRestaurantImage')}>Editar</button> 
-                    <br /><br/><hr></hr> */}
+
 
 
                     <h2>{this.state.restaurantInfo.name}</h2>
-                    {/* {this.state.showEditRestaurantName && <EditInput 
-                                                nameValue="name"
-                                                changeHandlerEdit={this.props.changeHandlerEdit}
-                                                submitEdit={this.props.submitEdit}
-                                                userToEdit={this.props.restaurantToEdit}
-                                                id={this.props.match.params.id}
-                                                restaurantInfo={this.state.restaurantInfo}
-                                            />}
-                    <button onClick={()=>this.toggleShowEditName(this.state.showEditRestaurantName, 'showEditRestaurantName')}>Editar</button> 
-                    <br /><br/><hr></hr> */}
+
 
 
 
@@ -107,7 +83,7 @@ class Restaurant extends React.Component{
 
 
 
-
+                    <Link to={this.url}>Ir a editar restaurante</Link>
 
 
                 </div>

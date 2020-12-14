@@ -5,7 +5,8 @@ import SignUp from './components/SignUp';
 import LogIn from './components/LogIn';
 import Profile from './components/Profile';
 import MisDatos from './components/MisDatos';
-import EditRecipe from './components/EditRecipe'
+import EditRecipe from './components/EditRecipe';
+import EditRestaurant from './components/editRestaurant';
 
 import { Link, Route, Redirect } from 'react-router-dom';
 import UserService from './services/UserService';
@@ -20,14 +21,11 @@ class App extends React.Component {
 
 	state = {
     isLogged: {},
-    updatedRecipe: {},
 		newUser: { username: '', password: '', email: '', image: '', name: '', lastName: '', birthdate: ''},
     loggingUser: { username: '', password: '', email: '', image: '', name: '', lastName: '', birthdate: ''},
     userToEdit: { username: '', password: '', email: '', image: '', name: '', lastName: '', birthdate: ''},
     newRecipe: {title: '', ingredients: '', process: '', difficulty: '', duration: '', author: '', image: '', id: ''},
-    recipeToEdit: {title: '', ingredients: '', process: '', difficulty: '', duration: '', author: '', image: '', id: ''},
     newRestaurant: {name: '',owner: '', address: '', schedule: '', contact: '', typeOfFood: '', recomendations: '', webUrl: '', image: ''},
-    restaurantToEdit: {name: '',owner: '', address: '', schedule: '', contact: '', typeOfFood: '', recomendations: '', webUrl: '', image: ''},
     errorMessage: '',
     userRecipes: [],
     userRestaurants: [],
@@ -146,22 +144,10 @@ class App extends React.Component {
   }
 
   //EDIT RECIPES
-  submitEditRecipe = (event) => {
-    event.preventDefault();
-		this.service
-    .editRecipe(this.state.recipeToEdit, event.target[0].name, event.target[0].id)
-      .then((result)=>{
-        console.log(result)
-      })
-      .catch((err)=>{
-        console.log('Sorry something went wrong on edit recipe.', err);
-      })
-  };
 
 
-  changeHandlerEditRecipe = (_eventTarget) => {
-      this.setState({ recipeToEdit: { ...this.state.recipeToEdit, [_eventTarget.name]: _eventTarget.value, id: _eventTarget.id} });
-  };
+
+
 
   // DISPLAY ALL USER RESTAURANTS
   displayUserRestaurants = () => {
@@ -196,22 +182,7 @@ class App extends React.Component {
     this.setState({ newRestaurant: { ...this.state.newRestaurant, [_eventTarget.name]: _eventTarget.value } });
   };
 
-  // EDIT RESTAURANTS
-  submitEditRestaurant = (event) => {
-    event.preventDefault();
-		this.service
-    .editRestaurant(this.state.restaurantToEdit, event.target[0].name)
-      .then((result)=>{
-        this.setState({updatedRestaurant: result});
-      })
-      .catch((err)=>{
-        console.log('Sorry something went wrong on edit restaurant.', err);
-      })
-  };
 
-  changeHandlerEditRestaurant = (_eventTarget) => {
-      this.setState({ restaurantToEdit: { ...this.state.restaurantToEdit, [_eventTarget.name]: _eventTarget.value, id: _eventTarget.id} });
-  };
   
   
 	componentDidMount() {
@@ -230,8 +201,7 @@ class App extends React.Component {
           {!this.state.isLogged.username && <Link to="/login" className="login-button">Entrar</Link>}
           <br />
           {this.state.isLogged.username && <div><button className="logout-btn" onClick={()=>{this.logOut();}}>Log Out</button></div>}
-        <br />        
-
+          <br />        
         </nav>
 
       
@@ -342,9 +312,6 @@ class App extends React.Component {
           render={(props)=> (
             <EditRecipe
               {...props}
-              changeHandlerEditRecipe={this.changeHandlerEditRecipe}
-              submitEditRecipe={this.submitEditRecipe}
-              recipeToEdit={this.state.recipeToEdit}
             />
           )}
         />
@@ -386,7 +353,16 @@ class App extends React.Component {
                 restaurantToEdit={this.state.restaurantToEdit}
               />
 					)}
-				/>  
+				/> 
+
+        <Route
+          path='/editrestaurant/:id'
+          render={(props)=> (
+            <EditRestaurant
+              {...props}
+            />
+          )}
+        /> 
        
        
         
