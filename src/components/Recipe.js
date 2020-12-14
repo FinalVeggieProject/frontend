@@ -6,15 +6,23 @@ import '../styles/Recipe.css';
 
 class Recipe extends React.Component{
 
-    state = {
-        recipeInfo: {},
-        showEditRecipeImage: false,
-        showEditRecipeTitle: false,
-        showEditRecipeIngredients: false,
-        showEditRecipeDifficulty: false,
-        showEditRecipeDuration: false,
-        showEditRecipeProcess: false,
-};
+    constructor(props){
+        super(props)
+
+        this.state = {
+                recipeInfo: {},
+                showEditRecipeImage: false,
+                showEditRecipeTitle: false,
+                showEditRecipeIngredients: false,
+                showEditRecipeDifficulty: false,
+                showEditRecipeDuration: false,
+                showEditRecipeProcess: false,
+        };
+
+        this.url = `/editrecipe/${this.props.match.params.id}`
+    }
+
+    
 
     service = new UserService();
 
@@ -32,8 +40,6 @@ class Recipe extends React.Component{
             });
     }
 
-    
-
 
 
     toggleShowEditName = (valueToLook, valueToChange) => {
@@ -49,6 +55,7 @@ class Recipe extends React.Component{
     // componentDidUpdate(){
     //     this.displayRecipeAfter();
     // }
+    
     
 
 
@@ -175,6 +182,8 @@ class Recipe extends React.Component{
                     <button onClick={()=>this.toggleShowEditName(this.state.showEditRecipeProcess, 'showEditRecipeProcess')}>Editar</button> 
                     <br /><br/><hr></hr> */}
 
+                    
+                    <Link to={this.url}>Ir a editar receta</Link> 
                     
 
 

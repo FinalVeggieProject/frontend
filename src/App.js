@@ -5,6 +5,7 @@ import SignUp from './components/SignUp';
 import LogIn from './components/LogIn';
 import Profile from './components/Profile';
 import MisDatos from './components/MisDatos';
+import EditRecipe from './components/EditRecipe'
 
 import { Link, Route, Redirect } from 'react-router-dom';
 import UserService from './services/UserService';
@@ -109,6 +110,8 @@ class App extends React.Component {
 		this.setState({ userToEdit: { ...this.state.userToEdit, [_eventTarget.name]: _eventTarget.value } });
   };
 
+  
+
   // ADD RECIPE CONFIG
   submitRecipe = (event) => {
     event.preventDefault();
@@ -122,9 +125,10 @@ class App extends React.Component {
     
   }; 
 
-	changeHandlerRecipe = (_eventTarget) => {
-		this.setState({ newRecipe: { ...this.state.newRecipe, [_eventTarget.name]: _eventTarget.value } });
-  };
+  changeHandlerRecipe = (_eventTarget) => {
+      this.setState({ newRecipe: { ...this.state.newRecipe, [_eventTarget.name]: _eventTarget.value } });
+    };
+	
 
   // DISPLAY ALL USER RECIPES
   displayUserRecipes = () => {
@@ -141,27 +145,23 @@ class App extends React.Component {
       });
   }
 
-  
-
   //EDIT RECIPES
   submitEditRecipe = (event) => {
     event.preventDefault();
 		this.service
-    .editRecipe(this.state.recipeToEdit, event.target[0].name)
+    .editRecipe(this.state.recipeToEdit, event.target[0].name, event.target[0].id)
       .then((result)=>{
-        console.log(result);
-        this.displayUserRecipes();
+        console.log(result)
       })
       .catch((err)=>{
         console.log('Sorry something went wrong on edit recipe.', err);
       })
   };
 
+
   changeHandlerEditRecipe = (_eventTarget) => {
       this.setState({ recipeToEdit: { ...this.state.recipeToEdit, [_eventTarget.name]: _eventTarget.value, id: _eventTarget.id} });
   };
-
-
 
   // DISPLAY ALL USER RESTAURANTS
   displayUserRestaurants = () => {
@@ -221,8 +221,6 @@ class App extends React.Component {
   }
 
 
-      // componentDidMount(){
-    // }
   render(){
     return (
       <div className="App">
@@ -314,9 +312,6 @@ class App extends React.Component {
 				/>)
         }
 
-        
-        
-
 
         <Route
 					path="/allmyrecipes"
@@ -340,7 +335,19 @@ class App extends React.Component {
                 recipeToEdit={this.state.recipeToEdit}
               />
 					)}
-				/> 
+				/>
+
+        <Route
+          path='/editrecipe/:id'
+          render={(props)=> (
+            <EditRecipe
+              {...props}
+              changeHandlerEditRecipe={this.changeHandlerEditRecipe}
+              submitEditRecipe={this.submitEditRecipe}
+              recipeToEdit={this.state.recipeToEdit}
+            />
+          )}
+        />
 
       {
           this.state.redirectRestaurants
@@ -357,10 +364,6 @@ class App extends React.Component {
 					)}
 				/> )
       }
-
-        
-
-         
 
         <Route
 					path="/allmyrestaurants"
