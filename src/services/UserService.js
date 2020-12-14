@@ -40,6 +40,18 @@ class UserService {
       .then(response => response.data)
   }
 
+  getallrecipes = () => {
+    return this.service.get("/getallrecipes")
+      .then(response => response.data)
+  }
+
+  getallrestaurants = () => {
+    return this.service.get("/getallrestaurants")
+      .then(response => response.data)
+  }
+
+
+
   editUser = (userToEdit, valueToEdit) => {
     return this.service.put("/edit-user", {userToEdit, valueToEdit})
       .then(response => {

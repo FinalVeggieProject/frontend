@@ -70,6 +70,7 @@ class EditRecipe extends React.Component {
                                                 nameValue="title"
                                                 changeHandlerEdit={this.props.changeHandlerEditRecipe}
                                                 getRecipeInfo={this.getRecipeInfo}
+                                                recipe
                                             />}
             <button onClick={()=>this.toggleShowEditName(this.state.showEditTitle, 'showEditTitle')}>Editar</button>  <br /><br/><hr></hr>
 
@@ -80,16 +81,54 @@ class EditRecipe extends React.Component {
                                                 nameValue="ingredients"
                                                 changeHandlerEdit={this.props.changeHandlerEditRecipe}
                                                 getRecipeInfo={this.getRecipeInfo}
+                                                recipe
                                             />}
             <button onClick={()=>this.toggleShowEditName(this.state.showEditIngredients, 'showEditIngredients')}>Editar</button> <br /><br/><hr></hr>
 
 
-            <strong>Dificultad:</strong> <p>{this.state.recipeToDisplay.difficulty}</p>
+            <strong>Dificultad:</strong> 
+            {
+                        this.state.recipeToDisplay.difficulty===1 &&   <p className="rating">
+                                                                    <i className="fas fa-star"></i>
+                                                                </p>
+                    }
+                    {
+                        this.state.recipeToDisplay.difficulty===2 &&   <p className="rating">
+                                                                    <i className="fas fa-star"></i>
+                                                                    <i className="fas fa-star"></i>
+                                                                </p>
+                    }
+                    {
+                        this.state.recipeToDisplay.difficulty===3 &&   <p className="rating">
+                                                                    <i className="fas fa-star"></i>
+                                                                    <i className="fas fa-star"></i>
+                                                                    <i className="fas fa-star"></i>
+                                                                </p>
+                    }
+                    {
+                        this.state.recipeToDisplay.difficulty===4 &&   <p className="rating">
+                                                                    <i className="fas fa-star"></i>
+                                                                    <i className="fas fa-star"></i>
+                                                                    <i className="fas fa-star"></i>
+                                                                    <i className="fas fa-star"></i>
+                                                                </p>
+                    }
+                    {
+                        this.state.recipeToDisplay.difficulty===5 &&   <p className="rating">
+                                                                    <i className="fas fa-star"></i>
+                                                                    <i className="fas fa-star"></i>
+                                                                    <i className="fas fa-star"></i>
+                                                                    <i className="fas fa-star"></i>
+                                                                    <i className="fas fa-star"></i>
+                                                                </p>
+                    }
+
             {this.state.showEditDifficulty && <EditInput 
                                                 id={this.props.match.params.id}
                                                 nameValue="difficulty"
                                                 changeHandlerEdit={this.props.changeHandlerEditRecipe}
                                                 getRecipeInfo={this.getRecipeInfo}
+                                                recipe
                                             />}
             <button onClick={()=>this.toggleShowEditName(this.state.showEditDifficulty, 'showEditDifficulty')}>Editar</button> <br /><br/><hr></hr>
 
@@ -100,6 +139,7 @@ class EditRecipe extends React.Component {
                                                 nameValue="duration"
                                                 changeHandlerEdit={this.props.changeHandlerEditRecipe}
                                                 getRecipeInfo={this.getRecipeInfo}
+                                                recipe
                                             />}
             <p><button onClick={()=>this.toggleShowEditName(this.state.showEditDuration, 'showEditDuration')}>Editar</button></p><br /><br/><hr></hr>
 
@@ -110,6 +150,7 @@ class EditRecipe extends React.Component {
                                                 nameValue="process"
                                                 changeHandlerEdit={this.props.changeHandlerEditRecipe}
                                                 getRecipeInfo={this.getRecipeInfo}
+                                                recipe
                                             />}
             <button onClick={()=>this.toggleShowEditName(this.state.showEditProcess, 'showEditProcess')}>Editar</button> <br /><br/><hr></hr>
 

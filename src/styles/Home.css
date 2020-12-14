@@ -1,0 +1,13 @@
+.home nav{
+    display: none;
+}
+
+.awssld__content {
+    margin-top: 5vw;
+}
+
+.home a {
+    background-color: violet;
+    opacity: 0;
+    padding: 40vw;
+}

@@ -7,6 +7,7 @@ import Profile from './components/Profile';
 import MisDatos from './components/MisDatos';
 import EditRecipe from './components/EditRecipe';
 import EditRestaurant from './components/editRestaurant';
+import Home from './components/Home';
 
 import { Link, Route, Redirect } from 'react-router-dom';
 import UserService from './services/UserService';
@@ -205,6 +206,12 @@ class App extends React.Component {
         </nav>
 
       
+        <Route
+					exact path="/"
+					render={() => (
+							<Home />
+					)}
+				/>
 
         <Route
 					path="/signup"
@@ -264,10 +271,11 @@ class App extends React.Component {
 					)}
 				/>
 
-        {
-          this.state.redirectRecipes
+        {/* { */}
+          {/* this.state.redirectRecipes
           ?<Redirect to="/allmyrecipes" /> 
-          :(
+          :
+          ( */}
         <Route
 					path="/addrecipe"
 					render={() => (
@@ -279,8 +287,9 @@ class App extends React.Component {
                 newRecipe={this.state.newRecipe}
               />
 					)}
-				/>)
-        }
+				/>
+        {/* ) */}
+        {/* } */}
 
 
         <Route
