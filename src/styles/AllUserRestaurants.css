@@ -5,6 +5,9 @@
     --background: #FFFFFF;
     --details: #dd7977;
   }
+  html{
+      padding-bottom: 15vw;
+  }
 
   .userRestaurants{
       padding-top: 5vw;

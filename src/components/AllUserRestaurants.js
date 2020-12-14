@@ -2,6 +2,7 @@ import React from 'react';
 import RestaurantCard from './RestaurantCard';
 import UserService from '../services/UserService';
 import {Link} from 'react-router-dom';
+import '../styles/AllUserRestaurants.css';
 
 class AllUserRestaurants extends React.Component {
 
@@ -24,7 +25,6 @@ class AllUserRestaurants extends React.Component {
     render(){
         return(
             <div className="userRestaurants">
-                {/* {this.props.displayUserRestaurants()} */}
                 <Link to="/profile">Back to Profile</Link> <br/><br/>
                 <h2>All my restaurants:</h2>
        
