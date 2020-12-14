@@ -96,7 +96,7 @@ class MisDatos extends React.Component {
                                                 submitEdit={this.props.submitEdit}
                                                 userToEdit={this.props.userToEdit}
                                             />}
-            <p><button onClick={()=>this.toggleShowEditName(this.state.showEditPassword, 'showEditPassword')}>Editar</button></p><br /><br/><hr></hr>
+            <p><button onClick={()=>this.toggleShowEditName(this.state.showEditPassword, 'showEditPassword')}>Editar</button></p><hr></hr>
 
 
             <strong>Fecha de nacimiento:</strong> <p>{this.props.isLogged.birthdate}</p>
