@@ -194,6 +194,11 @@ class App extends React.Component {
 
 
   render(){
+    
+      this.state.isLogged.username
+      ?<Redirect to="/profile" />
+      :<Redirect to="/" />
+    
     return (
       <div className="App">
         <nav>
@@ -380,7 +385,10 @@ class App extends React.Component {
 
       </div>
     );
+
+    
   }
+
   
 }
 
