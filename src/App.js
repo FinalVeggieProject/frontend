@@ -1,5 +1,6 @@
 import './App.css';
 import React from 'react';
+import {withRouter} from 'react-router-dom';
 
 import SignUp from './components/SignUp';
 import LogIn from './components/LogIn';
@@ -270,6 +271,7 @@ class App extends React.Component {
 				/> 
 
         
+            {/* AQUÍ DEBERÍA IR EL CORTE PARA FILTRAR SI NO ESTAS LOGGED */}
 
 
         <Route
@@ -280,10 +282,14 @@ class App extends React.Component {
             />
           )}
         /> 
-        {
-          !this.state.isLogged
-          ?<Redirect to="/" />
-          :<Route
+
+          {
+            this.state.isLogged
+            ?<Redirect to="/profile" />
+            :this.props.history.push('/')
+          }
+
+        <Route
             path="/profile"
             render={() => (
             
@@ -296,7 +302,7 @@ class App extends React.Component {
               
             )}
           /> 
-        }
+      
        
        <Route
 					path="/misdatos"
