@@ -3,11 +3,14 @@ import {Link} from 'react-router-dom';
 import '../styles/NewRestaurant.css';
 
 const NewRestaurant = (props)=>{
+
+
+
   return(
     <div className="newrecipe">
             
-            {this.props.isLogged.username && <Link to="/profile">Volver a mi pefil</Link> }
-            {!this.props.isLogged.username && <Link to="/">Volver Inicio</Link> }
+            {props.isLogged.username && <Link to="/profile">Volver a mi pefil</Link> }
+            {!props.isLogged.username && <Link to="/">Volver Inicio</Link> }
             
       <h2>Add new restaurant</h2>
 
