@@ -11,3 +11,8 @@
     opacity: 0;
     padding: 40vw;
 }
+
+.home h3{
+    margin-top: 20vw;
+    margin-bottom: 0;
+}
