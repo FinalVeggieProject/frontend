@@ -4,10 +4,10 @@ import {Link} from 'react-router-dom';
 const NewRecipe = (props)=>{
   return(
     <div>
-            {this.props.isLogged.username
+            {/* {this.props.isLogged.username
             ?<Link to="/profile">Volver a mi pefil</Link> 
             :<Link to="/">Volver a Inicio</Link>
-            } 
+            }  */}
       <h2>Add new recipe:</h2>
       <form onSubmit={props.submitRecipe}>
 
