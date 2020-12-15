@@ -6,7 +6,8 @@ const NewRestaurant = (props)=>{
   return(
     <div className="newrecipe">
             
-            <Link to="/profile">Volver a mi pefil</Link> 
+            {this.props.isLogged.username && <Link to="/profile">Volver a mi pefil</Link> }
+            {!this.props.isLogged.username && <Link to="/">Volver Inicio</Link> }
             
       <h2>Add new restaurant</h2>
 
