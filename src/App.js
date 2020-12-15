@@ -361,7 +361,7 @@ class App extends React.Component {
 					)}
 				/>  
       {
-        this.state.isLogged
+        this.state.isLogged.username
         ?<Redirect to="/profile" />
         :<Redirect to="/" />
       }
