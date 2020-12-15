@@ -9,8 +9,11 @@ const NewRestaurant = (props)=>{
   return(
     <div className="newrecipe">
             
-            {props.isLogged.username && <Link to="/profile">Volver a mi pefil</Link> }
-            {!props.isLogged.username && <Link to="/">Volver Inicio</Link> }
+            {
+        props.isLogged.username
+        ?<Link to="/profile">Volver a mi pefil</Link>
+        :<Link to="/">Volver Inicio</Link> 
+      }
             
       <h2>Add new restaurant</h2>
 
