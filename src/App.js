@@ -248,6 +248,7 @@ class App extends React.Component {
             
 							<Recipe 
                 {...props}
+                isLogged={this.state.isLogged}
                 changeHandlerEdit={this.changeHandlerEditRecipe}
                 submitEdit={this.submitEditRecipe}
                 recipeToEdit={this.state.recipeToEdit}
@@ -262,6 +263,7 @@ class App extends React.Component {
 					render={(props) => (
 							<Restaurant 
                 {...props}
+                isLogged={this.state.isLogged}
                 changeHandlerEdit={this.changeHandlerEditRestaurant}
                 submitEdit={this.submitEditRestaurant}
                 restaurantToEdit={this.state.restaurantToEdit}
@@ -278,6 +280,7 @@ class App extends React.Component {
           render={(props)=> (
             <EditRestaurant
               {...props}
+              isLogged={this.state.isLogged}
             />
           )}
         /> 
@@ -316,6 +319,7 @@ class App extends React.Component {
             
          
 							<NewRecipe 
+                isLogged={this.state.isLogged}
                 submitRecipe={this.submitRecipe}
                 changeHandlerRecipe={this.changeHandlerRecipe}
                 newRecipe={this.state.newRecipe}
@@ -327,7 +331,7 @@ class App extends React.Component {
 					path="/allmyrecipes"
 					render={() => (
 							<AllUserRecipes 
-              isLogged={this.state.isLogged}
+                isLogged={this.state.isLogged}
                 userRecipes={this.state.userRecipes}
                 displayUserRecipes={this.displayUserRecipes}
 
@@ -338,6 +342,7 @@ class App extends React.Component {
           path='/editrecipe/:id'
           render={(props)=> (
             <EditRecipe
+              isLogged={this.state.isLogged}
               {...props}
             />
           )}
@@ -347,6 +352,7 @@ class App extends React.Component {
 					path="/addrestaurant"
 					render={() => (
 							<NewRestaurant
+                isLogged={this.state.isLogged}
                 submitRestaurant={this.submitRestaurant}
                 changeHandlerRestaurant={this.changeHandlerRestaurant}
                 newRestaurant={this.state.newRestaurant}
@@ -358,6 +364,7 @@ class App extends React.Component {
 					path="/allmyrestaurants"
 					render={() => (
 							<AllUserRestaurants 
+                isLogged={this.state.isLogged}
                 userRestaurants={this.state.userRestaurants}
                 displayUserRestaurants={this.displayUserRestaurants}
               />

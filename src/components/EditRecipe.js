@@ -52,7 +52,10 @@ class EditRecipe extends React.Component {
         return(
             <div className="misdatos">
 
-            <Link to="/profile">Back to Profile</Link> <br/><br/>
+            {this.props.isLogged.username
+            ?<Link to="/profile">Volver a mi pefil</Link> 
+            :<Link to="/">Volver a Inicio</Link>
+            }
 
             <strong>Imagen de la receta:</strong> <img src={this.state.recipeToDisplay.image} alt={this.state.recipeToDisplay.title} />
             {this.state.showEditImage && <EditInput 

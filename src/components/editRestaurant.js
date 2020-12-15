@@ -51,7 +51,10 @@ class EditRestaurant extends React.Component {
         return(
             <div className="misdatos">
 
-            <Link to="/profile">Back to Profile</Link> <br/><br/>
+            {this.props.isLogged.username
+            ?<Link to="/profile">Volver a mi pefil</Link> 
+            :<Link to="/">Volver a Inicio</Link>
+            }
 
             <img src={this.state.restaurantToDisplay.image} alt={this.state.restaurantToDisplay.name}/>
             {this.state.showEditRestaurantImage && <EditInput  

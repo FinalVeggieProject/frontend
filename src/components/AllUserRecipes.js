@@ -30,7 +30,7 @@ class AllUserRecipes extends React.Component {
             <div className="userRecipes">
             {this.props.isLogged.username
             ?<Link to="/profile">Volver a mi pefil</Link> 
-            :<Link to="/">Volver a mi pefil</Link>
+            :<Link to="/">Volver a Inicio</Link>
             }
             <br/><br/>
                 <h2>Mis recetas:</h2>

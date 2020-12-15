@@ -25,7 +25,10 @@ class AllUserRestaurants extends React.Component {
     render(){
         return(
             <div className="userRestaurants">
-                <Link to="/profile">Back to Profile</Link> <br/><br/>
+                {this.props.isLogged.username
+                ?<Link to="/profile">Volver a mi pefil</Link> 
+                :<Link to="/">Volver a Inicio</Link>
+                }
                 <h2>All my restaurants:</h2>
        
                 {this.props.userRestaurants.map((restaurant, index)=>{
