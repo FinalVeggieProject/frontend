@@ -1,6 +1,5 @@
 import './App.css';
 import React from 'react';
-import {withRouter} from 'react-router-dom';
 
 import SignUp from './components/SignUp';
 import LogIn from './components/LogIn';
@@ -282,14 +281,7 @@ class App extends React.Component {
             />
           )}
         /> 
-
-          {
-            this.state.isLogged
-            ?<Redirect to="/profile" />
-            :this.props.history.push('/')
-          }
-
-        <Route
+      <Route
             path="/profile"
             render={() => (
             
