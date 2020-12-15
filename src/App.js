@@ -239,6 +239,52 @@ class App extends React.Component {
             )}
           />
 
+
+
+
+        <Route
+					path="/recipe/:id"
+					render={(props) => (
+            
+							<Recipe 
+                {...props}
+                changeHandlerEdit={this.changeHandlerEditRecipe}
+                submitEdit={this.submitEditRecipe}
+                recipeToEdit={this.state.recipeToEdit}
+              />
+					)}
+				/>
+
+
+
+        <Route
+					path="/restaurant/:id"
+					render={(props) => (
+							<Restaurant 
+                {...props}
+                changeHandlerEdit={this.changeHandlerEditRestaurant}
+                submitEdit={this.submitEditRestaurant}
+                restaurantToEdit={this.state.restaurantToEdit}
+              />
+					)}
+				/> 
+
+        {
+          this.state.isLogged.username
+          ?<Redirect to="/profile" />  
+          :<Redirect to='/' />
+        }
+
+
+        <Route
+          path='/editrestaurant/:id'
+          render={(props)=> (
+            <EditRestaurant
+              {...props}
+            />
+          )}
+        /> 
+
         <Route
             path="/profile"
             render={() => (
@@ -252,8 +298,8 @@ class App extends React.Component {
               
             )}
           /> 
-
-        <Route
+       
+       <Route
 					path="/misdatos"
 					render={() => (
 							<MisDatos 
@@ -288,20 +334,6 @@ class App extends React.Component {
               />
 					)}
 				/>
-
-        <Route
-					path="/recipe/:id"
-					render={(props) => (
-            
-							<Recipe 
-                {...props}
-                changeHandlerEdit={this.changeHandlerEditRecipe}
-                submitEdit={this.submitEditRecipe}
-                recipeToEdit={this.state.recipeToEdit}
-              />
-					)}
-				/>
-
         <Route
           path='/editrecipe/:id'
           render={(props)=> (
@@ -332,32 +364,7 @@ class App extends React.Component {
 					)}
 				/>  
 
-        <Route
-					path="/restaurant/:id"
-					render={(props) => (
-							<Restaurant 
-                {...props}
-                changeHandlerEdit={this.changeHandlerEditRestaurant}
-                submitEdit={this.submitEditRestaurant}
-                restaurantToEdit={this.state.restaurantToEdit}
-              />
-					)}
-				/> 
 
-        <Route
-          path='/editrestaurant/:id'
-          render={(props)=> (
-            <EditRestaurant
-              {...props}
-            />
-          )}
-        /> 
-       
-       {
-          this.state.isLogged.username
-          ?<Redirect to="/profile" />  
-          :<Redirect to='/' />
-        }
        
         
 
@@ -369,3 +376,5 @@ class App extends React.Component {
 }
 
 export default App;
+
+       
