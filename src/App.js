@@ -227,48 +227,31 @@ class App extends React.Component {
 					)}
 				/>
 
-        {
-          this.state.isLogged.username
-          ?<Redirect to="/profile" />  
-          :<Redirect to='/' />
-        }
+        <Route
+            path="/login"
+            render={() => (
+              <LogIn
+                submitLogIn={this.submitLogIn}
+                loggingUser={this.state.loggingUser}
+                changeHandlerLogIn={this.changeHandlerLogIn}
+                errorMessage={this.state.errorMessage}
+              />
+            )}
+          />
 
-        {
-          this.state.isLogged.username
-          ?<Redirect to="/profile" />  
-          :<Route
-					path="/login"
-					render={() => (
-						<LogIn
-							submitLogIn={this.submitLogIn}
-							loggingUser={this.state.loggingUser}
-							changeHandlerLogIn={this.changeHandlerLogIn}
-              errorMessage={this.state.errorMessage}
-						/>
-					)}
-				/>
-
-        }
-
-        {
-          this.state.isLogged.username
-          ?<Route
-					path="/profile"
-					render={() => (
-					
-							<Profile 
-                  isLogged={this.state.isLogged}
-                  displayUserRecipes={this.displayUserRecipes}
-                  displayUserRestaurants={this.displayUserRestaurants}
-                />
+        <Route
+            path="/profile"
+            render={() => (
+            
+                <Profile 
+                    isLogged={this.state.isLogged}
+                    displayUserRecipes={this.displayUserRecipes}
+                    displayUserRestaurants={this.displayUserRestaurants}
+                  />
+                
               
-						
-					)}
-				/> 
-          :<Redirect to='/' />
-        }
-
-        
+            )}
+          /> 
 
         <Route
 					path="/misdatos"
@@ -282,11 +265,6 @@ class App extends React.Component {
 					)}
 				/>
 
-        {/* { */}
-          {/* this.state.redirectRecipes
-          ?<Redirect to="/allmyrecipes" /> 
-          :
-          ( */}
         <Route
 					path="/addrecipe"
 					render={() => (
@@ -299,10 +277,7 @@ class App extends React.Component {
               />
 					)}
 				/>
-        {/* ) */}
-        {/* } */}
-
-
+     
         <Route
 					path="/allmyrecipes"
 					render={() => (
@@ -336,11 +311,7 @@ class App extends React.Component {
           )}
         />
 
-      {/* {
-          this.state.redirectRestaurants
-          ?<Redirect to="/allmyrestaurants" /> 
-          :( */}
-            <Route
+        <Route
 					path="/addrestaurant"
 					render={() => (
 							<NewRestaurant
@@ -350,8 +321,6 @@ class App extends React.Component {
               />
 					)}
 				/> 
-        {/* )
-      } */}
 
         <Route
 					path="/allmyrestaurants"
@@ -362,7 +331,6 @@ class App extends React.Component {
               />
 					)}
 				/>  
-
 
         <Route
 					path="/restaurant/:id"
@@ -385,6 +353,11 @@ class App extends React.Component {
           )}
         /> 
        
+       {
+          this.state.isLogged.username
+          ?<Redirect to="/profile" />  
+          :<Redirect to='/' />
+        }
        
         
 
