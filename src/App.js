@@ -205,7 +205,12 @@ class App extends React.Component {
           <br />        
         </nav>
 
-      
+        <Route
+					exact path="/"
+					render={() => (
+							<Home />
+					)}
+				/>  
         
 
         <Route
@@ -276,8 +281,7 @@ class App extends React.Component {
             />
           )}
         /> 
-      {this.state.isLogged.username 
-      ?<Route
+      <Route
             path="/profile"
             render={() => (
             
@@ -290,13 +294,8 @@ class App extends React.Component {
               
             )}
           /> 
-        :<Route
-					exact path="/"
-					render={() => (
-							<Home />
-					)}
-				/>
-      }
+        
+      
       
        
        <Route
@@ -328,6 +327,7 @@ class App extends React.Component {
 					path="/allmyrecipes"
 					render={() => (
 							<AllUserRecipes 
+              isLogged={this.state.isLogged}
                 userRecipes={this.state.userRecipes}
                 displayUserRecipes={this.displayUserRecipes}
 
