@@ -43,6 +43,7 @@ class Home extends React.Component {
     render(){
         return(
             <div className="home">
+            <h3>Últimas recetas</h3>
                 <AwesomeSlider className="recipesSlider">
                 {
                     this.state.globalRecipes.map((recipe)=>{
@@ -51,7 +52,7 @@ class Home extends React.Component {
                 }
                 </AwesomeSlider>
                 
-
+                <h3>Últimos restaurantes</h3>
                 <AwesomeSlider className="restaurantsSlider">
                 {
                     this.state.globalRestaurants.map((restaurant)=>{
