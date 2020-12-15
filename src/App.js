@@ -281,7 +281,7 @@ class App extends React.Component {
             />
           )}
         /> 
-      <Route
+      {this.state.isLogged && <Route
             path="/profile"
             render={() => (
             
@@ -293,7 +293,7 @@ class App extends React.Component {
                 
               
             )}
-          /> 
+          /> }
       
        
        <Route
@@ -360,7 +360,11 @@ class App extends React.Component {
               />
 					)}
 				/>  
-
+      {
+        this.state.isLogged
+        ?<Redirect to="/profile" />
+        :<Redirect to="/" />
+      }
 
        
         
