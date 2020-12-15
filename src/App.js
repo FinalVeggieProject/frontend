@@ -206,12 +206,7 @@ class App extends React.Component {
         </nav>
 
       
-        <Route
-					exact path="/"
-					render={() => (
-							<Home />
-					)}
-				/>
+        
 
         <Route
 					path="/signup"
@@ -295,7 +290,12 @@ class App extends React.Component {
               
             )}
           /> 
-        :<Redirect to="/login" />
+        :<Route
+					exact path="/"
+					render={() => (
+							<Home />
+					)}
+				/>
       }
       
        
