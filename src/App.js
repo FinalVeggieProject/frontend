@@ -281,7 +281,8 @@ class App extends React.Component {
             />
           )}
         /> 
-      {this.state.isLogged.username && <Route
+      {this.state.isLogged.username 
+      ?<Route
             path="/profile"
             render={() => (
             
@@ -293,7 +294,9 @@ class App extends React.Component {
                 
               
             )}
-          /> }
+          /> 
+        :<Redirect to="/" />
+      }
       
        
        <Route
