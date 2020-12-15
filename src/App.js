@@ -295,7 +295,7 @@ class App extends React.Component {
               
             )}
           /> 
-        :<Redirect to="/" />
+        :<Redirect to="/login" />
       }
       
        
