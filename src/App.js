@@ -269,28 +269,7 @@ class App extends React.Component {
 					)}
 				/> 
 
-        {
-          this.state.isLogged.username
-          ?<Route
-            path="/profile"
-            render={() => (
-            
-                <Profile 
-                    isLogged={this.state.isLogged}
-                    displayUserRecipes={this.displayUserRecipes}
-                    displayUserRestaurants={this.displayUserRestaurants}
-                  />
-                
-              
-            )}
-          />   
-          :<Route
-					exact path="/"
-					render={() => (
-							<Home />
-					)}
-				/>
-        }
+        
 
 
         <Route
@@ -301,8 +280,10 @@ class App extends React.Component {
             />
           )}
         /> 
-
-        <Route
+        {
+          !this.state.isLogged
+          ?<Redirect to="/" />
+          :<Route
             path="/profile"
             render={() => (
             
@@ -315,6 +296,7 @@ class App extends React.Component {
               
             )}
           /> 
+        }
        
        <Route
 					path="/misdatos"
