@@ -5,10 +5,9 @@ import '../styles/NewRestaurant.css';
 const NewRestaurant = (props)=>{
   return(
     <div className="newrecipe">
-            {/* {this.props.isLogged.username
-            ?<Link to="/profile">Volver a mi pefil</Link> 
-            :<Link to="/">Volver a Inicio</Link>
-            }  */}
+            
+            <Link to="/profile">Volver a mi pefil</Link> 
+            
       <h2>Add new restaurant</h2>
 
       <form onSubmit={props.submitRestaurant}>
