@@ -10,7 +10,7 @@ class UserService {
 
   constructor() {
     let service = axios.create({
-      baseURL: "https://git.heroku.com/veggieback.git",
+      baseURL: "https://veggieback.herokuapp.com/",
       withCredentials: true
     });
 
