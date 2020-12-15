@@ -227,13 +227,16 @@ class App extends React.Component {
 					)}
 				/>
 
-        {/* {
+        {
           this.state.isLogged.username
           ?<Redirect to="/profile" />  
           :<Redirect to='/' />
-        } */}
+        }
 
-				<Route
+        {
+          this.state.isLogged.username
+          ?<Redirect to="/profile" />  
+          :<Route
 					path="/login"
 					render={() => (
 						<LogIn
@@ -245,7 +248,11 @@ class App extends React.Component {
 					)}
 				/>
 
-        <Route
+        }
+
+        {
+          this.state.isLogged.username
+          ?<Route
 					path="/profile"
 					render={() => (
 					
@@ -257,7 +264,11 @@ class App extends React.Component {
               
 						
 					)}
-				/>
+				/> 
+          :<Redirect to='/login' />
+        }
+
+        
 
         <Route
 					path="/misdatos"
