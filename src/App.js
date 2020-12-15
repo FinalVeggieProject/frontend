@@ -195,12 +195,13 @@ class App extends React.Component {
 
   render(){
     
-      this.state.isLogged.username
-      ?<Redirect to="/profile" />
-      :<Redirect to="/" />
+     
     
     return (
       <div className="App">
+      { this.state.isLogged.username
+      ?<Redirect to="/profile" />
+      :<Redirect to="/" />}
         <nav>
           {!this.state.isLogged.username && <Link to="/signup">Unirse</Link>}
           <br />
