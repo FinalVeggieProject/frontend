@@ -271,8 +271,25 @@ class App extends React.Component {
 
         {
           this.state.isLogged.username
-          ?<Redirect to="/profile" />  
-          :<Redirect to='/' />
+          ?<Route
+            path="/profile"
+            render={() => (
+            
+                <Profile 
+                    isLogged={this.state.isLogged}
+                    displayUserRecipes={this.displayUserRecipes}
+                    displayUserRestaurants={this.displayUserRestaurants}
+                  />
+                
+              
+            )}
+          />   
+          :<Route
+					exact path="/"
+					render={() => (
+							<Home />
+					)}
+				/>
         }
 
 
