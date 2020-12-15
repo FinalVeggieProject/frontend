@@ -281,7 +281,7 @@ class App extends React.Component {
             />
           )}
         /> 
-      {this.state.isLogged && <Route
+      {this.state.isLogged.username && <Route
             path="/profile"
             render={() => (
             
