@@ -13,6 +13,8 @@
 }
 
 .home h3{
-    margin-top: 20vw;
-    margin-bottom: 0;
+    margin-bottom: -2vw;
+}
+.home .first-title{
+    margin-top: 2vw;
 }
