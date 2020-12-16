@@ -63,7 +63,6 @@ class App extends React.Component {
         this.setState({isLogged: result})
         this.setState({errorMessage: result.message})
         this.checkIfLoggedIn();
-        <Redirect to="/profile" />
 			})
 			.catch((err) => {
 				console.log('Sorry something went wrong on submit.', err);
