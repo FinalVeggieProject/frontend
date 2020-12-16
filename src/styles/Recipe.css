@@ -29,6 +29,7 @@ html{
     width: 102%;
     position: relative;
     left: -1%;
+    top: 5vw;
     border: 2px solid var(--primary);
 }
 
