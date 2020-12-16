@@ -10,7 +10,7 @@ class UserService {
 
   constructor() {
     let service = axios.create({
-      baseURL: "https://veggieplanet.netlify.app",
+      baseURL: "https://veggieback.herokuapp.com",
       withCredentials: true
     });
 
