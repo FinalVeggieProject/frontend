@@ -60,9 +60,8 @@ class App extends React.Component {
 		this.service
 			.login(this.state.loggingUser.username, this.state.loggingUser.password)
 			.then((result) => {
-        this.setState({isLogged: result})
-        this.setState({errorMessage: result.message})
-        this.checkIfLoggedIn();
+        this.setState({isLogged: result, errorMessage: result.message})
+        // this.checkIfLoggedIn();
 			})
 			.catch((err) => {
 				console.log('Sorry something went wrong on submit.', err);
@@ -201,9 +200,9 @@ class App extends React.Component {
     return (
 
       <div className="App">
-      {/* { this.state.isLogged.username
+      { this.state.isLogged.username
       ?<Redirect to="/profile" />
-      :<Redirect to="/" />} */}
+      :<Redirect to="/" />}
 
         <nav>
           {!this.state.isLogged.username && <Link to="/signup">Unirse</Link>}
