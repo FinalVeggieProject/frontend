@@ -14,49 +14,55 @@ const NewRecipe = (props)=>{
       <h2>Add new recipe:</h2>
       <form onSubmit={props.submitRecipe}>
 
-      <label htmlFor="title">Título de la receta: </label>
+      <label htmlFor="title"></label>
         <input 
             type="text" 
             name="title" 
+            placeholder="Titulo de la receta"
             value={props.newRecipe.title} 
             onChange={(event)=>props.changeHandlerRecipe(event.target)}
         />
         <br/>
-        <label htmlFor="difficulty">Dificultad (1-5): </label>
+        <label htmlFor="difficulty"></label>
         <input 
             type="text" 
             name="difficulty" 
+            placeholder="Dificultad (1-5)"
             value={props.newRecipe.difficulty} 
             onChange={(event)=>props.changeHandlerRecipe(event.target)}
         />
         <br/>
-        <label htmlFor="duration">Duración (min): </label>
+        <label htmlFor="duration"></label>
         <input 
             type="text" 
             name="duration" 
+            placeholder="Duración"
             value={props.newRecipe.duration} 
             onChange={(event)=>props.changeHandlerRecipe(event.target)}
         />
         <br/>
-        <label htmlFor="image">URL de la imagen: </label>
+        <label htmlFor="image"></label>
         <input 
             type="text" 
             name="image" 
+            placeholder="Instertar url de imágen válida"
             value={props.newRecipe.image} 
             onChange={(event)=>props.changeHandlerRecipe(event.target)}
         />
         <br/>
-        <label htmlFor="ingredients">Ingredientes: </label>
+        <label htmlFor="ingredients"></label>
         <textarea 
             name="ingredients" 
+            placeholder="Ingredientes"
             value={props.newRecipe.ingredients} 
             onChange={(event)=>props.changeHandlerRecipe(event.target)}
         /> <br/>
        
         <br/>
-        <label htmlFor="process">Elaboración: </label>
+        <label htmlFor="process"></label>
         <textarea 
             name="process" 
+            placeholder="Elaboración"
             value={props.newRecipe.process} 
             onChange={(event)=>props.changeHandlerRecipe(event.target)}
         />
