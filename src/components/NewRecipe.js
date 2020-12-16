@@ -1,9 +1,10 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import '../styles/NewRestaurant.css';
 
 const NewRecipe = (props)=>{
   return(
-    <div>
+    <div className="newrecipe">
       {
         props.isLogged.username
         ?<Link to="/profile">Volver a mi pefil</Link>
