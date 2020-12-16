@@ -60,6 +60,7 @@ class App extends React.Component {
 		this.service
 			.login(this.state.loggingUser.username, this.state.loggingUser.password)
 			.then((result) => {
+        this.setState({isLogged: result})
         this.setState({errorMessage: result.message})
         this.checkIfLoggedIn();
         <Redirect to="/profile" />
