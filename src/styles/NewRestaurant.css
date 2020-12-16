@@ -80,3 +80,7 @@
     line-height: 5vw;
     width: 100%;
 }
+
+.newrecipe textarea {
+    width: 100%;
+}
