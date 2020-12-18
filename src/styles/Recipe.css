@@ -11,7 +11,7 @@ html{
 
 .recipe .back-buttons {
     display: flex;
-    flex-direction: row;
+    flex-direction: row-reverse;
     position: relative;
     left: 27%;
     top: 3vw;

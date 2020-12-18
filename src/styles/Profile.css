@@ -43,7 +43,7 @@
     display: block;
     width: 65%;
     margin: -10px auto;
-    border-radius: 15px;
+    border-radius: 20px;
     background-color: var(--button);
     font-size: 5.5vw;
 }
