@@ -58,9 +58,10 @@ class Recipe extends React.Component{
         return(
                 <div className="recipe">
                     {this.props.isLogged.username
-                    ?<Link to="/allmyrecipes">Volver a Recetas</Link> 
+                    ?<Link to="/allmyrecipes">Ir a mis Recetas</Link> 
                     :<Link to="/">Volver a Inicio</Link>
                     } 
+                    {this.props.isLogged.username && <Link to="/allrecipes">Ir a todas las Recetas</Link> }
 
                     <img src={this.state.recipeInfo.image} alt={this.state.recipeInfo.title}/>
 
