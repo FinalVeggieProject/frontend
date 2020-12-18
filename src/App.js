@@ -17,6 +17,7 @@ import AllUserRestaurants from './components/AllUserRestaurants'
 import Recipe from './components/Recipe';
 import Restaurant from './components/Restaurant'
 import NewRestaurant from './components/NewRestaurant';
+import AllRecipes from './components/AllRecipes';
 
 class App extends React.Component {
 
@@ -376,6 +377,13 @@ class App extends React.Component {
                 userRestaurants={this.state.userRestaurants}
                 displayUserRestaurants={this.displayUserRestaurants}
               />
+					)}
+				/>  
+
+        <Route
+					path="/allrecipes"
+					render={() => (
+							<AllRecipes />
 					)}
 				/>  
       {/* {

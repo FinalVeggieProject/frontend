@@ -50,6 +50,10 @@ class UserService {
       .then(response => response.data)
   }
 
+  getglobalrecipes = () => {
+    return this.service.get("/getglobalrecipes")
+      .then(response => response.data)
+  }
 
 
   editUser = (userToEdit, valueToEdit) => {
