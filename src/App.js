@@ -18,6 +18,7 @@ import Recipe from './components/Recipe';
 import Restaurant from './components/Restaurant'
 import NewRestaurant from './components/NewRestaurant';
 import AllRecipes from './components/AllRecipes';
+import AllRestaurants from './components/AllRestaurants';
 
 class App extends React.Component {
 
@@ -387,7 +388,17 @@ class App extends React.Component {
                 isLogged={this.state.isLogged}
               />
 					)}
-				/>  
+				/> 
+
+        <Route
+					path="/allrestaurants"
+					render={() => (
+							<AllRestaurants 
+                isLogged={this.state.isLogged}
+              />
+					)}
+				/> 
+
       {/* {
         this.state.isLogged.username && <Redirect to="/profile"/>
       } */}

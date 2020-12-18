@@ -47,10 +47,13 @@ class Restaurant extends React.Component{
     render(){
         return(
                 <div className="recipe">
-                    {this.props.isLogged.username
-                    ?<Link to="/allmyrestaurants">Volver a Restaurantes</Link> 
-                    :<Link to="/">Volver a Inicio</Link>
-                    } 
+                    <div className="back-buttons">
+                        {this.props.isLogged.username
+                        ?<Link to="/allmyrecipes">Ir a mis Recetas</Link> 
+                        :<Link to="/">Volver a Inicio</Link>
+                        } 
+                        {this.props.isLogged.username && <Link to="/allrecipes">Ir a las Recetas</Link> }
+                    </div>
 
                     <img src={this.state.restaurantInfo.image} alt={this.state.restaurantInfo.name}/>
 

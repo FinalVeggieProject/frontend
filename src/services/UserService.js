@@ -55,6 +55,12 @@ class UserService {
       .then(response => response.data)
   }
 
+  getglobalrestaurants = () => {
+    return this.service.get("/getglobalrestaurants")
+      .then(response => response.data)
+  }
+
+
 
   editUser = (userToEdit, valueToEdit) => {
     return this.service.put("/edit-user", {userToEdit, valueToEdit})

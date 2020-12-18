@@ -28,6 +28,7 @@ html{
     outline: none;
     border: 1px solid var(--primary);
     text-decoration: none;
+    text-align: center;
 }
 
 .recipe img{
