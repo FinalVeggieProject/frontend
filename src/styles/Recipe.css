@@ -10,6 +10,8 @@ html{
 }
 
 .recipe .back-buttons {
+    display: flex;
+    flex-direction: column;
     position: relative;
     left: 59%;
     top: 3vw;
