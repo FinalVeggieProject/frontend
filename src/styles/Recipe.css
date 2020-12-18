@@ -13,7 +13,7 @@ html{
     display: flex;
     flex-direction: row-reverse;
     position: relative;
-    left: 27%;
+    left: 0%;
     top: 3vw;
 }
 
