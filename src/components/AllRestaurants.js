@@ -1,7 +1,7 @@
 import React from 'react';
 import UserService from '../services/UserService';
 import {Link} from 'react-router-dom';
-import RestaurantCard from '../components/RecipeCard';
+import RestaurantCard from '../components/RestaurantCard';
 
 class AllRestaurants extends React.Component {
 
