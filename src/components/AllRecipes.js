@@ -27,7 +27,7 @@ class AllRecipes extends React.Component {
 
     render(){
         return(
-            <div className="allrecipes">
+            <div className="userRecipes">
                 {this.props.isLogged.username
                 ?<Link to="/profile">Volver a mi pefil</Link> 
                 :<Link to="/">Volver a Inicio</Link>
