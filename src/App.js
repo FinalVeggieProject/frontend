@@ -383,7 +383,9 @@ class App extends React.Component {
         <Route
 					path="/allrecipes"
 					render={() => (
-							<AllRecipes />
+							<AllRecipes 
+                isLogged={this.state.isLogged}
+              />
 					)}
 				/>  
       {/* {
