@@ -205,12 +205,12 @@ class App extends React.Component {
       :<Redirect to="/" />}
 
         <nav>
-          {!this.state.isLogged.username && <Link to="/signup">Unirse</Link>}
-          <br />
-          {!this.state.isLogged.username && <Link to="/login" className="login-button">Entrar</Link>}
-          <br />
-          {this.state.isLogged.username && <div><button className="logout-btn" onClick={()=>{this.logOut();}}>Log Out</button></div>}
-          <br />        
+          <h1>Veggie Planet</h1>
+          <div>
+            {!this.state.isLogged.username && <Link to="/signup">Unirse</Link>}
+            {!this.state.isLogged.username && <Link to="/login" className="login-button">Entrar</Link>}
+            {this.state.isLogged.username && <div><button className="logout-btn" onClick={()=>{this.logOut();}}>Log Out</button></div>}
+          </div>
         </nav>
 
         <Route
