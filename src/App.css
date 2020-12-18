@@ -24,9 +24,13 @@ body{
   width: 100%;
   flex-direction: row;
   flex-wrap: nowrap;
-  justify-content: flex-end;
+  justify-content: space-between;
   padding-bottom: .6%;
   align-items: center;
+}
+
+.App h1{
+  color: var(--background);
 }
 
 .App nav a,
