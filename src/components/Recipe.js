@@ -52,7 +52,7 @@ class Recipe extends React.Component{
     
     
 
-
+    todas
     render(){
         
         return(
@@ -62,7 +62,7 @@ class Recipe extends React.Component{
                     ?<Link to="/allmyrecipes">Ir a mis Recetas</Link> 
                     :<Link to="/">Volver a Inicio</Link>
                     } 
-                    {this.props.isLogged.username && <Link to="/allrecipes">Ir a todas las Recetas</Link> }
+                    {this.props.isLogged.username && <Link to="/allrecipes">Ir a las Recetas</Link> }
                 </div>
 
                     <img src={this.state.recipeInfo.image} alt={this.state.recipeInfo.title}/>
