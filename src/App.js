@@ -206,7 +206,7 @@ class App extends React.Component {
 
         <nav>
           <h1>Veggie Planet</h1>
-          <div>
+          <div className="nav-buttons">
             {!this.state.isLogged.username && <Link to="/signup">Unirse</Link>}
             {!this.state.isLogged.username && <Link to="/login" className="login-button">Entrar</Link>}
             {this.state.isLogged.username && <div><button className="logout-btn" onClick={()=>{this.logOut();}}>Log Out</button></div>}
