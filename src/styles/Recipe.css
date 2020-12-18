@@ -11,15 +11,15 @@ html{
 
 .recipe .back-buttons {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     position: relative;
-    left: 59%;
+    left: 27%;
     top: 3vw;
 }
 
 .recipe a {
     margin-left: 6vw;
-    width: 40vw;
+    width: 34vw;
     font-size: 4vw;
     padding: 1vw 2vw;
     background-color: var(--button);
