@@ -26,7 +26,7 @@
 ::-webkit-input-placeholder { 
     color: var(--secondary); 
     opacity: .5;
-    font-size: 4.6vw;
+    font-size: 1rem;
     font-style: italic;
 } 
 
@@ -67,12 +67,10 @@
     width: 100%;
 }
 
-@media(min-width: 500px){
+/* @media(min-width: 500px){
     .LogIn form{
         width: 300px;
     }
-    ::-webkit-input-placeholder { 
-        font-size: 40px;
-    } 
-}
+  
+} */
 
