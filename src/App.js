@@ -215,6 +215,8 @@ class App extends React.Component {
           </div>
         </nav>
 
+        
+
         <Route
 					exact path="/"
 					render={() => (
