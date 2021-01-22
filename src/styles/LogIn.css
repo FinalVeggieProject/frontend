@@ -69,7 +69,7 @@
 
 @media(min-width: 500px){
     .LogIn form{
-        width: 500px;
+        width: 300px;
     }
     ::-webkit-input-placeholder { 
         font-size: 1rem;
