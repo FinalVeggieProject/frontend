@@ -84,6 +84,12 @@ body{
   }
   .App h3 {
     font-size: 2rem;
+  }
+}
+
+@media (min-width: 1000px){
+
+  .App h3 {
     margin-left: 20px;
   }
 }
